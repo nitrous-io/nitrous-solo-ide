@@ -1,0 +1,38 @@
+.sidebar-body
+  .ide-toolbar.top
+    h2 title={App.router.ideController.content.name}
+      = App.router.ideController.content.name
+    .ide-toolbar-btns
+      .ui.dropdown.btn.icon title='Settings' disabled=opsSocketNotReady
+        span.more-icn
+        ul.dropdown-menu.right
+          li
+            a href='#' click='didClickSetHomeAsRoot target="view"'
+              | Set Home Folder As Root
+          li
+            a href='#' click='didClickRefresh target="view"'
+              | Refresh Tree
+          li.separator
+          li
+            a href='#' click='didClickShowHidden target="view"'
+              if hiddenFilesVisible
+                | Hide Hidden Files
+              else
+                | Show Hidden Files
+          li.separator
+          li
+            a href='#' click='didClickUpload target="view"'
+              | Upload Files
+
+  #sidebar-group
+    .ide-pane class={showActiveFilesPane::hidden}
+      App.IdeSidebarActiveFilesView
+
+    .tree contextMenu='didRightClickBackground target="view"'
+      ul.root
+        App.IdePathView path=rootPath
+    App.IdeSidebarBorderView
+
+App.IdePathContextMenuView viewName="contextMenuView"
+App.IdeUploadDialogView
+App.IdeConfirmDeletePathDialogView

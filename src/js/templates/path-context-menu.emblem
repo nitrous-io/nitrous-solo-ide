@@ -1,0 +1,60 @@
+ul.dropdown-menu
+  with view.path
+    if file
+      li
+        a href='#' click='didClickOpen target="view"'
+          | Open &ldquo;#{name}&rdquo;
+      li.separator
+      if rootPath
+        li.disabled
+          a.noclick href='#'
+            | Delete &ldquo;#{name}&rdquo;
+      else
+        li
+          a href='#' click='didClickRename target="view"'
+            | Rename
+        li
+          a href='#' click='didClickDelete target="view"'
+            | Delete &ldquo;#{name}&rdquo;
+        li.separator
+        li
+          a href='#' click='didClickDownloadFile target="view"'
+            | Download &ldquo;#{name}&rdquo;
+    if directory
+      li
+        a href='#' click='didClickRefresh target="view"'
+          | Refresh &ldquo;#{name}&rdquo;
+      li.separator
+      li
+        a href='#' click='didClickFindInFolder target="view"'
+          | Find in &ldquo;#{name}&rdquo;...
+      li.separator
+      li
+        a href='#' click='didClickNewFile target="view"'
+          | New File
+      li
+        a href='#' click='didClickNewFolder target="view"'
+          | New Folder
+      li.separator
+      if rootPath
+        li.disabled
+          a.noclick href='#'
+            | Delete &ldquo;#{name}&rdquo;
+      else
+        li
+          a href='#' click='didClickRename target="view"'
+            | Rename
+        li
+          a href='#' click='didClickDelete target="view"'
+            | Delete &ldquo;#{name}&rdquo;
+      li.separator
+      li
+        a href='#' click='didClickDownloadFile target="view"'
+          | Download &ldquo;#{name}&rdquo;
+      li
+        a href='#' click='didClickUploadFiles target="view"'
+          | Upload Files to &ldquo;#{name}&rdquo;...
+      li.separator
+      li
+        a href='#' click='didClickSetFolderAsRoot target="view"'
+          | Set &ldquo;#{name}&rdquo; As Root

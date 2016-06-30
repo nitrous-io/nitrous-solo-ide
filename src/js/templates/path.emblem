@@ -1,0 +1,15 @@
+with view.path
+  unless editable
+    App.IdePathNameView path=this
+  else
+    App.IdeEditablePathNameView path=this
+
+  unless beingDeleted
+    if expanded
+      ul
+        each arrangedContent
+          if controller.hiddenFilesVisible
+            App.IdePathView path=this
+          else
+            unless hidden
+              App.IdePathView path=this

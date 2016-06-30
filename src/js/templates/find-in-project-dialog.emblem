@@ -1,0 +1,43 @@
+.ui.card
+  h2.card-header
+    | Find in Files
+  form submit='didClickFind target="view"'
+    .card-body
+      .ui.input-group
+        label.field-label for='ide-find-in-project-search-term'
+          | Find:
+        = input type='text' id='ide-find-in-project-search-term' classNameBindings=':focus view.termFieldInvalid:error' value=view.content.term spellcheck='false'
+
+      .ui.input-group
+        label.field-label for='ide-find-in-project-search-file-pattern'
+          | Pattern:
+        = input type='text' id='ide-find-in-project-search-file-pattern' value=view.content.filePattern placeholder='File path pattern. eg. `*.js` to search only javascript files' spellcheck='false'
+
+      .ui.input-group
+        label.field-label for='ide-find-in-project-search-location'
+          | Directory:
+        = input type='text' id='ide-find-in-project-search-location' placeholder='All files and folders' value=view.content.location spellcheck='false'
+
+      .ui.input-group
+        ul.ui.checkbox-group
+          li
+            .ui.checkbox
+              = input type='checkbox' id='ide-find-in-project-case-sensitive' checked=view.content.caseSensitive
+              label
+            label for='ide-find-in-project-case-sensitive' Case-sensitive
+
+          li
+            .ui.checkbox
+              = input type='checkbox' id='ide-find-in-project-regex' checked=view.content.useRegexp
+              label
+            label for='ide-find-in-project-regex' Regular expression
+
+    .card-footer
+      .right
+        if view.content.saving
+          button.ui.btn disabled='disabled'
+            i.spinner
+            | Saving...
+        else
+          a.ui.btn href='#' click='didClickCancel target="view"' Cancel
+          button.ui.btn.primary click='didClickFind target="view"' Find

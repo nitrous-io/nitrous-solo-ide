@@ -1,0 +1,12 @@
+.ui.card.auto
+  .card-body
+    p We have shutdown your project due to inactivity.
+  .card-footer
+    .right
+      button.ui.btn click='didClickReturnToDashboard target="view"' Return to Dashboard
+      if view.starting
+        button.ui.btn disabled='disabled'
+          i.spinner
+          | Starting...
+      else
+        button.ui.btn.primary click='didClickStartProject target="view"' Start Project

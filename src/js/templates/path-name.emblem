@@ -1,0 +1,8 @@
+with view.path
+  if directory
+    if expanded
+      i.fa.fa-caret-down
+    else
+      i.fa.fa-caret-right
+  span
+    = name

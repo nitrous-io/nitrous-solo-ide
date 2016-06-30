@@ -1,0 +1,47 @@
+.ui.card
+  h2.card-header
+    | Upload Files To &ldquo;
+    = view.content.path.name
+    | &rdquo;
+
+  .card-body
+    if view.dragAndDropCapable
+      view App.IdeUploadDialogDropZoneView
+        p
+          | Drop files here or
+          span.browse-btn.ui.btn.raised disabled=view.parentView.content.uploading
+            | Browse...
+            input.file-input type='file' name='files[]' multiple='multiple' disabled=view.parentView.content.uploading
+          | (Max. 20 MB / file)
+    else
+      p
+        span.browse-btn.ui.btn.raised
+          | Add Files...
+          input.file-input type='file' name='files[]' multiple='multiple' disabled=view.content.uploading
+        | (Max. 20 MB / file)
+    if view.content.length
+      ul.upload-list
+        each view.content
+          li
+            p.left
+              = fileName
+              if tooLarge
+                p.info
+                  | File Too Large
+            .right
+              if view.content.uploading
+                .ui.progress class={failed failed:danger}
+                  .bar style=widthStyle
+              else
+                button.ui.btn click='didClickRemoveUpload this target="view"'
+                  | Remove
+
+  .card-footer
+    .right
+      if view.content.saving
+        button.ui.btn disabled='disabled'
+          i.spinner
+          | Uploading...
+      else
+        button.ui.btn click='didClickCancel target="view"' Close
+        button.ui.btn.primary click='didClickUpload target="view"' Upload

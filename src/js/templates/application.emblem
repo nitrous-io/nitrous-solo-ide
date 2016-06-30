@@ -1,0 +1,5 @@
+= outlet
+= ui-connectivity-indicator
+if App.online
+  = ui-connectivity-indicator showBinding='App.router.ideController.ideSocketsNotReady' html='<i class="spinner"></i> Connecting...'
+App.SnackbarView items=App.snackbar.items

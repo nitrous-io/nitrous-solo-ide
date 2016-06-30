@@ -1,0 +1,18 @@
+.ui.card
+  h2.card-header
+    | Save File
+  form submit='didClickSave target="view"'
+    .card-body
+      .ui.input-group
+        label.field-label for='ide-save-dialog-save-as'
+          | Save As:
+        = input type='text' id='ide-save-dialog-save-as' class='focus' placeholder='foo/bar.txt' value=view.content.path disabled=view.content.saving
+    .card-footer
+      .right
+        if view.content.saving
+          button.ui.btn disabled='disabled'
+            i.spinner
+            | Saving...
+        else
+          a.ui.btn href='#' click='didClickCancel target="view"' Cancel
+          button.ui.btn.primary click='didClickSave target="view"' disabled=view.disableSaveButton Save

@@ -1,0 +1,6 @@
+.group
+  if view.readme
+    .notice
+      i.fa.fa-info-circle
+      | To view this document again in the future, go to &ldquo;Help&rdquo; &rsaquo; &ldquo;View README&rdquo; in the menu.
+  iframe src=view.uri sandbox="allow-forms allow-popups allow-scripts"

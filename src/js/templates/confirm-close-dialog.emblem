@@ -1,0 +1,18 @@
+.ui.card
+  h2.card-header
+    | Close &ldquo;
+    = view.content.document.title
+    | &rdquo; without saving?
+  .card-body
+    p
+      | Do you want to save the changes you made in the file &ldquo;
+      = view.content.document.title
+      | &rdquo;?
+    p
+      | Your changes will be lost if you close the file without saving.
+  .card-footer
+    .right
+      button.ui.btn.danger click='didClickDontSave target="view"' Don&rsquo;t Save
+      button.ui.btn click='didClickCancel target="view"' Cancel
+      button.ui.btn.primary click='didClickSave target="view"'
+        = view.content.saveButtonTitle

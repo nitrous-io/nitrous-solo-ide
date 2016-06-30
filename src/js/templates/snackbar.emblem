@@ -1,0 +1,4 @@
+each App.snackbar.items
+  li.snackbar-item class={fadein fadeout}
+    p click='didClick this target="view"'
+      = message

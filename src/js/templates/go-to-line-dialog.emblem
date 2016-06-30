@@ -1,0 +1,4 @@
+.ui.card
+  .card-body
+    .ui.input-group
+      = input type='text' class='focus' placeholder='Go to line' value=view.content.line

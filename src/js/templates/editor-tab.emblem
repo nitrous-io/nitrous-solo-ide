@@ -1,0 +1,8 @@
+a title=view.content.tooltip click='didClickTab view.content target="view"'
+  span
+    = view.content.title
+  button.close title='Close Tab' click='didClickClose view.content target="view"'
+    if view.content.clean
+      i.fa.fa-times
+    else
+      i.fa.fa-circle

@@ -1,0 +1,12 @@
+h3 Active Files
+ul
+  each file in view.files
+    li
+      a href="#" click='openPath file target=view'
+        span
+          = file.path.name
+      
+      .collab-users
+        each client in file.clients
+          .collab-user
+            img.gravatar src={client.gravatar} title={client.username}

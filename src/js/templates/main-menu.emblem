@@ -1,0 +1,84 @@
+.ui.topnav
+  .primary-nav
+    ul.nav
+      each view.menu
+        li.ui.dropdown
+          a href='#'
+            = name
+          App.IdeMenuView content=this
+
+  .secondary-nav
+    ul.nav
+      if App.pinger
+        li
+          App.IdePingerView
+      unless App.chromeApp
+        li.ui.dropdown.account-menu
+          a href='#'
+            img.gravatar src={App.user.gravatar}
+            = App.user.username
+            .ui.dropdown-triangle
+          ul.dropdown-menu.right
+            if App.host.free
+              li
+                a.with-progress-bar href='/app/#/dashboard/earn-bonuses'
+                  = App.user.usageRemainingHours
+                  '  free hours remaining
+                  = ui-progress value=App.user.usage_remaining max=App.user.usage_quota
+              li.separator
+              li
+                a href='#' click='showConfirmStopHostDialog'
+                  | Stop Workstation...
+              li.separator
+            li
+              a href=view.dashboardURL
+                | Dashboard
+            li
+              a href='/app/#/account'
+                | Account Settings
+            li.separator
+            li
+              a href='/app/#/logout'
+                | Log Out
+
+#about-nitrous.ui.modal
+  .ui.card
+    h2.card-header
+      | About Nitrous
+    .card-body
+      .logo Nitrous
+      p
+        | &trade; and &copy; 2012-
+        = view.currentYear
+        '
+        | Nitrous, Inc.
+        br
+        | All Rights Reserved.
+    .card-footer
+      .right
+        button.ui.btn click='closeAboutDialog target="view"' OK
+
+#confirm-stop-host-dialog.ui.modal
+  .ui.card
+    h2.card-header
+      | Stop Workstation
+    .card-body
+      .ui.input-group
+        ' Are you sure you want to stop workstation
+        strong
+          = App.host.slug
+        ' ?
+    .card-footer
+      .right
+        button.ui.btn click='closeConfirmStopHostDialog' Cancel
+        button.ui.btn.danger click='stopHost App.host.slug' Stop Now
+
+#stopping-host-dialog.ui.modal
+  .ui.card
+    .card-body
+      i.spinner
+      i.fa
+      ' Stopping workstation
+      strong
+        = App.host.slug
+      ' ... Please Wait

@@ -1,0 +1,57 @@
+.code-editor
+
+App.IdeEditorFindReplaceView document=view.document
+
+.ide-toolbar.bottom.status-bar
+  .ide-toolbar-btns
+    button.ui.btn click='didClickLineCol target="view"'
+      | Line {{view.document.line}}, Column {{view.document.column}}
+      if view.document.currentOffset
+        |  Offset {{view.document.currentOffset}}
+    if view.document.errorCount
+      span.errors
+        | {{view.document.errorCount}} {{plural view.document.errorCount 'Error' 'Errors'}}
+    if view.document.findError
+      span.errors
+        | {{view.document.findError}}
+
+  .ide-toolbar-btns
+    unless collabEnabled
+      button.ui.btn.disabled title='Upgrade your workspace to enable collaborative editing.'
+        | Collab Disabled
+
+    .ui.btn.dropdown
+      span
+        if view.softTabs
+          ' Soft Tabs:
+        else
+          ' Tab Size:
+      span
+        = view.tabSize
+
+      ul.dropdown-menu.right
+        each view.availableTabSizes
+          li
+            a click='didSelectTabSize size target="view"'
+              if active
+                i.fa.fa-check
+              = size
+
+        li.separator
+        li
+          a href='#' click='didClickSoftTabToggle target="view"'
+            if view.softTabs
+              i.fa.fa-check
+            | Soft Tabs (Spaces)
+
+    .ui.btn.dropdown
+      span
+        = view.modeName
+      span.caret
+      ul.dropdown-menu.modes.right
+        each view.availableModes
+          li
+            a href='#' click='didSelectMode mode target="view"'
+              if active
+                i.fa.fa-check
+              = name

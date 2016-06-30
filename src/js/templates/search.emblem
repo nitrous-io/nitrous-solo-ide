@@ -1,0 +1,26 @@
+with view.document
+  .summary
+    h4
+      = status
+
+  if errors
+    .errors
+      each error in errors
+        p = error
+
+  .search-results
+    each result in results
+      h4.result-title
+        i.fa.fa-file-text-o
+        = result.filename
+        '
+        span.match-count
+          | (
+          = result.matchCount
+          | )
+      each line in result.lines
+        a.search-line click='didClickResult result.filename line target="view"'
+          span.line-number
+            = line.lineNumber
+          span.line-text
+            = formatMatchedLine line.text

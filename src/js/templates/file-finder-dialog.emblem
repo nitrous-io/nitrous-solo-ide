@@ -1,0 +1,18 @@
+.ui.card
+  .card-body
+    .ui.input-group
+      = input type='text' class='focus' placeholder=view.content.placeholder value=view.content.pattern spellcheck='false'
+
+    if view.content.showStatus
+      .status
+        = view.content.humanStatus
+    else
+      if view.content.currentResults.length
+        ul.results
+          each view.content.currentResults
+            li class={selected}
+              a href='#' click='didClickResult absolutePath target="view"'
+                .filename
+                  = filename
+                .path
+                  = path

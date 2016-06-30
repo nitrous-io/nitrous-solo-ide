@@ -1,0 +1,21 @@
+require 'script!./vendor/jquery.js'
+require 'script!./vendor/handlebars.js'
+require 'script!./vendor/ember.js'
+require 'script!./vendor/ember-model.js'
+
+
+
+window._ = require './vendor/underscore'
+require './vendor/md5'
+require './vendor/mousetrap'
+require './lib/cm-find-replace'
+require './vendor/base64'
+require './vendor/strftime'
+require 'imports?define=>false&exports=>false!./vendor/jquery.ui.widget'
+require 'imports?define=>false&exports=>false!./vendor/jquery.fileupload'
+require './vendor/visibility.core'
+require './vendor/visibility.timers'
+require './vendor/polyfills'
+window.PubSub = require './vendor/pubsub-1.5.2'
+require './ember-bootstrap'
+require './app-classes'

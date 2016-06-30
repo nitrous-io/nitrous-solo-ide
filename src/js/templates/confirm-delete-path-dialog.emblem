@@ -1,0 +1,14 @@
+.ui.card
+  h2.card-header
+    ' Are you sure you want to delete
+    = view.content.path.name
+    | ?
+  .card-body
+    p
+      | This action&nbsp;
+      strong CANNOT
+      | &nbsp;be undone!
+  .card-footer
+    .right
+      button.ui.btn click='didClickCancel target="view"' Cancel
+      button.ui.btn.danger click='didClickDelete target="view"' Delete

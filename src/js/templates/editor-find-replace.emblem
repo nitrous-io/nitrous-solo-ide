@@ -1,0 +1,25 @@
+.ide-toolbar-btns.find-options
+  = ui-toggle-button on=view.useRegex label='.*' title='Regular expression'
+  = ui-toggle-button on=view.matchCase label='Aa' title='Case sensitive'
+
+.search-term
+  if view.showReplace
+    .labels
+      label Find What:
+      label Replace With:
+
+  .ui.input-group
+    App.IdeEditorFindReplaceTextField class='search-text' value=view.searchText
+    if view.showReplace
+      App.IdeEditorFindReplaceTextField value=view.replacementText
+
+.ide-toolbar-btns
+  div
+    button.ui.btn click='findNext target="view"' Find Next
+    button.ui.btn click='findPrev target="view"' Find Prev
+    button.ui.btn click='close target="view"' title='Close'
+      i.fa.fa-times
+  if view.showReplace
+    .replace-btns
+      button.ui.btn click='replace target="view"' Replace
+      button.ui.btn click='replaceAll target="view"' Replace All

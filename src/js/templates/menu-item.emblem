@@ -1,0 +1,12 @@
+with view.content
+  unless separator
+    a href=url target=target
+      span.menu-label.name
+        if checked
+          i.fa.fa-check
+        = name
+      unless submenu
+        span.menu-label.key
+          = keyLabel
+  if submenu
+    App.IdeMenuView content=submenu

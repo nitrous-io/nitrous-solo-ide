@@ -1,0 +1,10 @@
+with view.path
+  .ui.input-group
+    if directory
+      if expanded
+        i.fa.fa-caret-down
+      else
+        i.fa.fa-caret-right
+      App.IdeEditablePathNameTextField placeholder="Untitled Folder" spellcheck="false" value=view.newPathName
+    else
+      App.IdeEditablePathNameTextField placeholder="Untitled" spellcheck="false" value=view.newPathName

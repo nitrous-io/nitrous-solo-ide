@@ -1,0 +1,30 @@
+App.IdeConsoleBorderView
+
+.ide-toolbar.ide-tab-bar.top
+  ul.ui.tab-bar.ide-tabs
+    each content
+      li class={active:selected}
+        a href='#' click='didClickTab this target="view"'
+          span
+            if title
+              = title
+            else
+              | Shell
+          button.close title='Close Tab' click='didClickClose this target="view"'
+            i.fa.fa-times
+  .ide-toolbar-btns.ide-new-tab
+    button.ui.btn.icon title='New Tab' click='didClickNew target="view"'
+      i.fa.fa-plus
+  .ide-toolbar-btns
+    if minimized
+      button.ui.btn.icon title='Restore' click='didClickMinimizeConsole target="view"'
+        i.fa.fa-caret-up
+    else
+      button.ui.btn.icon title='Minimize' click='didClickMinimizeConsole target="view"'
+        i.fa.fa-minus
+    button.ui.btn.icon title='Toggle Full Screen' click='didClickFullScreen target="view"'
+      i.fa.fa-arrows-alt
+
+.console-sessions
+  each content
+    App.IdeConsoleSessionView consoleSession=this

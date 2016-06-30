@@ -1,0 +1,20 @@
+.ide-window
+  App.IdeMainMenuView controller=App.router.ideMainMenuController
+
+  .ide-body
+    // TODO: this should really be done using outlets and route#renderTemplate
+    .ide-body-editor
+      App.IdeSidebarView controller=App.router.ideSidebarController
+      App.IdeEditorView controller=App.router.ideEditorController
+
+    App.IdeConsoleView controller=App.router.ideConsoleController
+
+App.IdeBetaDialogView
+App.IdeErrorDialogView
+App.IdeResumeSessionDialogView
+App.IdeStartProjectDialogView
+App.IdeFindInProjectDialogView controller=controllers.ideFindInProject
+App.IdeFileFinderDialogView controller=controllers.ideFileFinder
+App.IdeCloneFromGitHubView controller=controllers.ideGit
+
+= outlet feedback

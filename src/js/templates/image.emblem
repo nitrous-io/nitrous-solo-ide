@@ -1,0 +1,2 @@
+.image style=view.bgImage
+  img src=view.uri

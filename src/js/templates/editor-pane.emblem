@@ -1,0 +1,31 @@
+if view.editorPane.isSplit
+  .split-panes class={view.editorPane.horizontal}
+    App.IdeEditorPaneView editorPane=view.editorPane.left
+    .pane-frame
+    App.IdeEditorPaneView editorPane=view.editorPane.right
+else
+  .ide-toolbar.ide-tab-bar.top
+    ul.ui.tab-bar.ide-tabs
+      each tab in view.editorPane.tabs
+        App.IdeEditorTabView content=tab
+    .ide-toolbar-btns.ide-new-tab
+      button.ui.btn.icon title='New Tab' click='didClickNew target="view"'
+        i.fa.fa-plus
+    .ide-toolbar-btns
+      unless view.editorPane.isRoot
+        button.ui.btn.icon.close-pane-button title='Close Pane' click='didClickClosePane target="view"'
+          i.fa.fa-times
+
+  .ide-document-views
+    each tab in view.editorPane.tabs
+      if tab.isDocumentTab
+        App.IdeDocumentView document=tab
+      else
+        if tab.isSearchTab
+          App.IdeSearchView document=tab
+        else
+          if tab.isImageTab
+            App.IdeImageView document=tab
+          else
+            if tab.isIframeTab
+              App.IdeIframeView document=tab
