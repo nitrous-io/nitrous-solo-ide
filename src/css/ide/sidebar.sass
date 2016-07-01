@@ -1,0 +1,149 @@
+@import '../variables'
+
+#ide-sidebar-view
+  display: flex
+  flex-shrink: 0
+  width: 250px
+  border-right: 1px solid $n2oGray1000
+  user-select: none
+  transition: margin-left .3s
+
+  &.hidden
+    #ide-sidebar-border-view
+      display: none
+
+  .sidebar-body
+    position: relative
+    background: $n2oGray800
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+
+    .ide-toolbar
+      &.top
+        display: flex
+        flex-direction: row
+
+        h2, .ui.btn
+          line-height: 32px
+
+        .ui.btn
+          text-align: center
+
+        h2
+          height: 32px
+          flex-grow: 1
+          margin: 0
+          display: block
+          white-space: nowrap
+          text-overflow: ellipsis
+          overflow: hidden
+          padding-left: 16px
+          font-size: 14px
+          font-weight: 500
+          color: $n2oGray300
+
+        .ui.btn.dropdown
+          position: relative
+          text-transform: none
+          cursor: pointer
+
+          &.open
+            background: rgba($n2oGray400, .4) !important
+
+          .more-icn
+            width: 3.60px
+            height: 14px
+            position: relative
+            top: 2px
+            display: inline-block
+            background: image_url('app/more-icn.svg') 0 0 no-repeat
+            background-size: 3.60px 14px
+
+      &.bottom
+        text-align: center
+
+    #sidebar-group
+      height: 100%
+      display: flex
+      flex-direction: column
+      flex-grow: 1
+
+      .ide-pane
+        overflow: hidden
+        overflow-y: auto
+        border-bottom: 1px solid #2B3237
+        flex-shrink: 0
+        max-height: calc(50vh - 100px)
+
+        &.hidden
+          display: none
+
+    .tree
+      $itemHeight: 24px
+      position: relative
+      overflow: auto
+      font-size: 14px
+      line-height: $itemHeight
+      flex-grow: 1
+
+      ul.root
+        margin: 0
+        padding: 8px 0 0 32px
+
+      ul
+        list-style: none
+        padding: 0 0 0 16px
+
+      .fa
+        margin-left: -16px
+        width: 8px
+        margin-right: 8px
+        text-align: center
+        color: $n2oGray400
+
+      a
+        color: $n2oGray200
+        transition: color .2s
+        padding-right: 8px
+
+        &:before
+          content: ''
+          position: absolute
+          display: inline-block
+          left: 0
+          width: 100%
+          height: $itemHeight
+          transition: background-color .2s
+          background: transparent
+
+        &:hover
+          &:before
+            background: rgba($n2oGray400, .2)
+
+        &.loading
+          color: $n2oGray100
+
+      li
+        white-space: nowrap
+
+      li.selected
+        a
+          &:before
+            background: rgba($n2oGray400, .4)
+
+      li.droppable > a
+        &:before
+          background: rgba($n2oGray400, .4)
+
+      .ide-editable-path-name-view
+        padding-right: 2px
+
+        input
+          position: relative
+          display: inline-block
+          left: -9px
+          height: 24px
+          line-height: 24px
+          padding: 0 8px
+          width: auto

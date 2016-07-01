@@ -1,0 +1,89 @@
+=stack-colors($lighten: 0%)
+  &.ruby
+    background-color: lighten($ruby, $lighten)
+  &.ruby-on-rails
+    background-color: lighten($ruby-on-rails, $lighten)
+  &.python
+    background-color: lighten($python, $lighten)
+  &.django
+    background-color: lighten($django, $lighten)
+  &.nodejs
+    background-color: lighten($nodejs, $lighten)
+  &.meteor
+    background-color: lighten($meteor, $lighten)
+  &.html5
+    background-color: lighten($html5, $lighten)
+  &.php
+    background-color: lighten($php, $lighten)
+  &.golang
+    background-color: lighten($golang, $lighten)
+  &.wordpress
+    background-color: lighten($wordpress, $lighten)
+  &.laravel
+    background-color: lighten($laravel, $lighten)
+  &.iojs
+    background-color: lighten($iojs, $lighten)
+  &.java
+    background-color: lighten($java, $lighten)
+  &.ubuntu
+    background-color: lighten($ubuntu, $lighten)
+  &.docker
+    background-color: lighten($docker, $lighten)
+  &.rust
+    background-color: lighten($rust, $lighten)
+  // &.asp
+  //   background-color: lighten($asp, $lighten)
+
+=truncate
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+=light-shadow
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .4)
+
+=card
+  background: $n2oGray800
+  border-radius: 2px
+
+// Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+=clearfix
+  &:before, &:after
+    content: " "
+    display: table
+
+  &:after
+    clear: both
+
+=appearance($val)
+  appearance: $val
+  -webkit-appearance: $val
+  -moz-appearance: $val
+
+=grayscale-font-smoothing
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+=placeholder-color($val)
+  // these have to be individually styled
+  &::-webkit-input-placeholder
+    color: $val
+    font-weight: 300
+    font-style: italic
+    font-size: $fontSizeSmall
+  &:-moz-placeholder
+    color: $val
+    font-weight: 300
+    font-style: italic
+    font-size: $fontSizeSmall
+  &::-moz-placeholder
+    color: $val
+    font-weight: 300
+    font-style: italic
+    font-size: $fontSizeSmall
+  &:-ms-input-placeholder
+    color: $val
+    font-weight: 300
+    font-style: italic
+    font-size: $fontSizeSmall

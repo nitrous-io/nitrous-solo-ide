@@ -1,0 +1,51 @@
+@import '../variables'
+
+#ide-file-finder-dialog-view
+  .ui.card
+    width: 600px
+    user-select: none
+    font-size: $fontSizeSmall
+    position: absolute
+    top: 70px
+
+  .input-group
+    margin: 0
+
+  .status
+    margin-top: 16px
+
+  ul.results
+    margin: 16px 0 0
+    padding: 0
+    list-style: none
+    background: $n2oGray850
+    border-radius: 2px
+    overflow: hidden
+
+    li
+      margin: 0
+      padding: 0 8px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      transition: background-color .2s, border-bottom-color .2s
+      border-bottom: 1px solid $n2oGray800
+
+      .filename
+        padding: 5px 0 2px 0
+
+      .path
+        padding: 2px 0 5px 0
+        font-size: $fontSizeXSmall
+
+      a
+        color: $n2oGray300
+
+      &:last-of-type
+        border-bottom: none
+
+      &.selected
+        background: $lightBlue600
+
+        a
+          color: white

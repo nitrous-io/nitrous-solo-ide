@@ -1,0 +1,76 @@
+#ide-sidebar-active-files-view
+
+  h3
+    color: #848F98
+    font-size: 13px
+    font-weight: 400
+    display: block
+    cursor: default
+    margin: 14px 0 0 16px
+
+  ul
+    list-style: none
+    margin: 0
+    padding: 8px 0 14px 0
+
+    li
+      height: 24px
+      line-height: 24px
+      padding: 0 14px 0 30px
+      margin-bottom: 1px
+      display: flex
+      overflow: hidden
+      transition: background .10s linear
+
+      &:hover
+        background: rgba(130,142,152,.2)
+
+        .collab-users
+          .collab-user:after
+            border: 2px solid #4B545C
+
+      a
+        cursor: pointer
+        color: #B4C0CA
+        font-size: 14px
+        display: flex
+        flex-grow: 1
+        margin-right: 20px
+
+      a, span
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+
+    .collab-users
+      display: flex
+      flex-shrink: 0
+
+      .collab-user
+        &, img
+          width: 16px
+          height: 16px
+          position: relative
+          display: inline-block
+          border-radius: 20px
+
+        img
+          background: #3D464D
+
+        &:not(:last-of-type)
+          margin-right: -4px
+
+        &:after
+          content: ""
+          width: 20px
+          height: 20px
+          position: absolute
+          top: 3px
+          left: -2px
+          right: -2px
+          bottom: -2px
+          border: 2px solid #3D464D
+          border-radius: 20px
+          pointer-events: none
+          transition: border .10s linear
+

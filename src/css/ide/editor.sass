@@ -1,0 +1,394 @@
+@import '../variables'
+@import '../mixins'
+
+@keyframes ot-cursor-name-fade-out
+  from
+    opacity: 1
+  to
+    opacity: 0
+
+@keyframes ot-cursor-head-fade-in
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+#ide-editor-view
+  display: flex
+  flex-direction: column
+  flex-grow: 1
+  flex-basis: 0
+  background: $n2oGray900
+
+  &.hide
+    display: none
+
+  &.fullscreen
+    position: absolute
+    top: 0
+    left: 0
+    width: 100% !important
+    height: 100% !important
+
+  .ide-editor-pane-view
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    flex-basis: 0
+
+    .ide-tab-bar
+      transition: background-color .3s
+
+    &:not(.active)
+      > .ide-tab-bar, > .ide-document-views > .ide-document-view > .ide-tab-bar
+        background: $n2oGray800
+
+        > .ide-toolbar-btns
+          > .ui.btn
+            color: $n2oGray400
+
+  .ide-toolbar.status-bar
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    background: $n2oGray800
+
+    .ui.btn
+      color: $n2oGray400
+      text-transform: none
+      height: 27px
+      line-height: 27px
+      font-size: 13px
+      cursor: pointer
+
+    .errors
+      color: $red400
+      text-transform: none
+      height: 27px
+      line-height: 27px
+      font-size: 13px
+
+    .ide-toolbar-btns:first-of-type
+      flex-grow: 1
+
+    ul.dropdown-menu
+      bottom: 27px
+
+  .split-panes
+    display: flex
+    flex-direction: row
+    flex-grow: 1
+
+    > .pane-frame
+      width: 1px
+      height: auto
+      background: $n2oGray1000
+
+    &.horizontal
+      flex-direction: column
+
+      > .pane-frame
+        width: auto
+        height: 1px
+
+  .ide-document-views
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+
+  .ide-document-view
+    flex-direction: column
+    flex-grow: 1
+    display: none
+
+    &.active
+      display: flex
+
+    .ide-toolbar
+      .ui.btn.dropdown
+        position: relative
+
+        &.open
+          background: rgba($n2oGray400, .4) !important
+
+      ul.dropdown-menu
+        margin-top: 9px
+        text-transform: none
+
+        &.modes
+          height: 376px
+          overflow-y: auto
+
+  .line-error-message
+    background: $n2oGray800
+    color: $n2oGray50
+    padding-left: 4px
+    font-size: $fontSizeXSmall
+
+  .ot-cursor
+    display: inline-block
+    vertical-align: bottom
+    margin: 0 -1px
+    width: 2px
+
+    &:hover
+      .ot-cursor-name
+        animation: none
+        opacity: 1
+
+    .ot-cursor-name
+      position: absolute
+      margin-top: -14px
+      margin-left: -2px
+      padding: 0 4px
+      border-radius: 2px
+      color: white
+      opacity: 1
+      font-size: 10px
+      pointer-events: none
+      animation: ot-cursor-name-fade-out .3s forwards
+      animation-delay: 3s
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: clip
+
+    .ot-cursor-head
+      position: absolute
+      width: 6px
+      height: 6px
+      margin-top: -5px
+      margin-left: -2px
+      border-radius: 2px
+      opacity: 0
+      animation: ot-cursor-head-fade-in .3s forwards
+      animation-delay: 3s
+
+    &.ot-cursor-top
+      .ot-cursor-name, .ot-cursor-head
+        margin-top: -2px
+
+  .code-editor
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+
+  .CodeMirror
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+    line-height: 1.5
+
+  .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler
+    background-color: $n2oGray700
+
+  .CodeMirror-cursor
+    border-left-width: 2px !important
+    margin-left: -1px
+
+  .CodeMirror-code
+    pre
+      word-break: break-all
+
+  .CodeMirror-scroll
+    flex-grow: 1
+
+  .CodeMirror-dialog
+    flex-shrink: 0
+    z-index: 4
+    border-top: 1px solid $n2oGray1000
+    background: $n2oGray700
+    font-family: $mainFont
+    font-size: 14px
+
+  .ide-editor-find-replace-view
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    flex-shrink: 0
+    background: $n2oGray800
+    border-top: 1px solid $n2oGray1000
+
+    &.hidden
+      display: none
+
+    button
+      text-transform: none
+
+    .ide-toolbar-btns
+      flex-shrink: 0
+
+    .find-options
+      .ui.btn
+        width: 32px
+        padding: 0
+
+    .search-term
+      display: flex
+      flex-direction: row
+      flex-grow: 1
+      min-width: 150px
+
+      .ui.input-group
+        flex-grow: 1
+
+      label, input.ember-text-field
+        font-size: 14px
+        margin: 2px 0
+        line-height: 28px
+        height: 28px
+
+      label
+        display: block
+        flex-shrink: 0
+        text-align: right
+        padding-right: 8px
+        color: $n2oGray400
+
+    .replace-btns
+      margin-top: -2px
+
+  .ide-image-view
+    flex-direction: column
+    flex-grow: 1
+    display: none
+    background: $n2oGray1000
+    overflow: auto
+    cursor: pointer
+    align-items: flex-start
+    justify-content: flex-start
+
+    &.active
+      display: flex
+
+    .image
+      display: flex
+      width: 100%
+      flex-grow: 1
+
+      img
+        display: block
+        flex-grow: 1
+        opacity: 0
+        width: 100%
+
+    &.zoomed
+      .image
+        display: block
+        background-image: none !important
+        flex-grow: 0
+
+        img
+          flex-grow: 0
+          opacity: 1
+          width: auto
+
+  .ide-iframe-view
+    flex-direction: column
+    flex-grow: 1
+    display: none
+    background: $n2oGray1000
+    overflow: auto
+
+    &.active
+      display: flex
+
+    .group
+      width: 100%
+      display: flex
+      flex-direction: column
+      flex-grow: 1
+
+      .notice
+        flex-shrink: 0
+        font-size: 13px
+        padding: 6px 10px
+        background: $n2oGray700
+        color: $n2oGray200
+        border-bottom: 1px solid $n2oGray1000
+
+        i
+          padding: 0 6px 0 0
+
+      iframe
+        flex-grow: 1
+        width: 100%
+        border: 0
+
+  .ide-search-view
+    display: none
+    flex-grow: 1
+    flex-direction: column
+
+    &.active
+      display: flex
+
+    .errors
+      flex-shrink: 0
+      background-color: $red400
+      border-bottom: 1px solid $n2oGray1000
+      color: $gray100
+      padding: 8px 8px 8px 22px
+      p
+        font-size: 13px
+        margin: 0
+
+    .summary
+      flex-shrink: 0
+      background-color: $n2oGray700
+      border-bottom: 1px solid $n2oGray1000
+      padding: 8px 8px 8px 22px
+      h4
+        color: $n2oGray100
+        font-size: 14px
+        font-weight: normal
+        margin: 0
+        text-shadow: 0 -1px 1px rgba(10, 20, 50, 0.8)
+
+    .search-results
+      flex-grow: 1
+      overflow: auto
+
+      h4.result-title
+        color: $n2oGray50
+        font-family: $monospaceFont
+        font-size: 14px
+
+        i.fa
+          padding: 0 4px 0 8px
+
+        span.match-count
+          color: $n2oGray500
+          font-size: 12px
+          line-height: 14px
+
+      a.search-line
+        display: block
+        white-space: nowrap
+        font-family: $monospaceFont
+        font-size: 14px
+        padding: 2px 4px 2px 22px
+
+        &:hover
+          background-color: #555
+          span.line-number
+            color: white
+        text-decoration: none
+
+        // TODO Ideally line numbers should be right-aligned.
+        span.line-number
+          color: $n2oGray500
+          margin-right: 12px
+
+        span.line-text
+          white-space: pre
+          color: $n2oGray100
+
+          span.search-match
+            border: 1px solid $n2oGray500
+            border-radius: 2px
+            color: $n2oGray50
+
+html.msie
+  #ide-editor-view
+    .CodeMirror
+      height: 0

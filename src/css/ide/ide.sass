@@ -1,0 +1,162 @@
+@import '../variables'
+
+::-webkit-scrollbar
+  width: 8px
+  height: 8px
+
+::-webkit-scrollbar-corner
+  background: $n2oGray700
+
+::-webkit-scrollbar-track
+  background: $n2oGray700
+
+::-webkit-scrollbar-thumb
+  border: 1px solid $n2oGray700
+  border-radius: 4px
+  background-color: $n2oGray400
+
+*, *:before, *:after
+  min-width: 0
+  min-height: 0
+
+html.ide
+  overflow: hidden
+
+  &, body, #app, #application-view, #ide-view, .ide-body
+    height: 100%
+
+#ide-view
+  .ide-window
+    display: flex
+    flex-direction: column
+    height: 100%
+
+  .ide-body
+    position: relative
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    flex-basis: 0
+    border-top: 1px solid $n2oGray1000
+
+    .ide-body-editor
+      display: flex
+      flex-direction: row
+      flex-grow: 1
+      flex-basis: 0
+
+  .ide-toolbar
+    background: $n2oGray700
+    border-top: 1px solid $n2oGray1000
+    border-bottom: 1px solid $n2oGray1000
+    flex-shrink: 0
+
+    &.top
+      border-top: none
+
+    &.bottom
+      border-bottom: none
+
+    &.special
+      background: #3D464D
+
+  .ide-toolbar-btns
+    flex-shrink: 0
+    padding: 0 6px
+
+    .ui.btn
+      height: 32px
+      border-radius: 0
+      padding: 0 10px
+      color: $n2oGray200
+
+      &.icon
+        width: 32px
+        padding: 0
+
+      &:focus:not(:hover)
+        background: none
+
+      &.right
+        float: right
+
+      &.toggle-button.on
+        color: $lightBlue500
+
+  .ide-tab-bar
+    display: flex
+
+    .ide-new-tab
+      flex-grow: 1
+
+  ul.ide-tabs
+    background: transparent
+    border-bottom: none
+
+    > li
+      height: 32px
+      white-space: nowrap
+
+      a
+        text-transform: none
+        line-height: 32px
+        padding: 0 16px
+        cursor: pointer
+
+      .close
+        width: 19px
+        height: 19px
+        border-radius: 10px
+        margin: 0
+        padding: 0
+        line-height: 19px
+        margin-left: 8px
+        margin-right: -8px
+        background: none
+        border: none
+        transition: background-color .2s
+        font-size: 12px
+
+        &:hover
+          background: rgba($n2oGray400, .2)
+
+        &:focus
+          outline: none
+
+        &:active
+          background: rgba($n2oGray400, .4)
+
+        i.fa.fa-circle
+          position: relative
+          top: -1px
+          font-size: 9px
+
+      &.selected
+        .ui.btn.close
+          color: $lightBlue500
+
+      &.drop-left
+        border-left: 2px solid $lightBlue500
+
+      &.drop-right
+        border-right: 2px solid $lightBlue500
+
+  .ide-pane-border-view
+    position: absolute
+    top: 0
+    left: auto
+    right: -8px
+    width: 10px
+    height: 100%
+    cursor: ew-resize
+
+    &.horizontal
+      top: -5px
+      left: 0
+      right: auto
+      width: 100%
+      height: 10px
+      cursor: ns-resize
+
+  #ide-error-dialog-view, #ide-start-project-dialog-view
+    z-index: 1000

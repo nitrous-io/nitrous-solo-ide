@@ -1,0 +1,120 @@
+@import 'mixins'
+@import 'variables'
+
+.CodeMirror
+  .cm-matchhighlight
+    border-radius: 3px
+    border-style: solid
+    border-width: 1px
+    margin: -1px
+
+    &.CodeMirror-selectedtext
+      border: 0
+      margin: 0
+
+  .cm-trailingspace
+    background-color: #d47f6f
+
+/* Autocompletion hint addon */
+.CodeMirror-hints
+  box-shadow: none
+  border-radius: 0
+  font-family: $monospaceFont
+  font-size: 13px
+  padding: 0
+
+.CodeMirror-hint
+  border-radius: 0
+  color: $n2oGray200
+
+.CodeMirror-hint-active
+  background: #d6cdd0
+  color: #840
+
+/* Code folding addon */
+.CodeMirror-foldmarker
+  color: white
+  text-shadow: #f3cf83 1px 1px 2px, #f3cf83 -1px -1px 2px, #f3cf83 1px -1px 2px, #f3cf83 -1px 1px 2px
+
+/* Linting addon */
+.CodeMirror-lint-tooltip
+  color: #666
+  border-color: #666
+  border-radius: 0
+  font-family: $monospaceFont
+  font-size: 13px
+  padding: 0
+
+.CodeMirror-lint-message-error, .CodeMirror-lint-message-warning
+  padding: 2px 4px
+
+.CodeMirror-lint-message-error
+  background-image: none
+  background-color: $red600
+  color: white
+
+.CodeMirror-lint-message-warning
+  background-image: none
+  background-color: $yellow600
+  color: black
+
+.cm-searching
+  background: #FFE792 !important
+  color: #000 !important
+  border-radius: 1px
+
+  &.CodeMirror-selectedtext
+    background: rgba(255,231,146,.65) !important
+
+/* Linting addon */
+.CodeMirror-hints
+  position: absolute
+  overflow: hidden
+  overflow-y: auto
+  list-style: none
+  margin: 0
+  padding: 0
+  border-radius: 2px
+  border: 1px solid #1F252A
+  background: #3D464D
+  font-family: $monospaceFont
+  color: $n2oGray200
+  font-size: 13px
+  max-height: 20em
+  box-shadow: 0 1px 10px rgba(0,0,0,.2)
+
+.CodeMirror-hint
+  height: 30px
+  line-height: 30px
+  padding: 0 10px
+  color: $n2oGray200
+
+  &:hover
+    background: #4B545C
+
+  &.CodeMirror-hint-active
+    &, &:hover
+      color: #FFF
+      background: #03A9F4
+
+.CodeMirror-hints ul
+  max-height: 20em
+  overflow-y: auto
+
+.CodeMirror-hints ul li
+  margin: 0
+  padding: 0 4px
+  max-width: 60em
+  overflow: hidden
+  white-space: pre
+  color: $n2oGray200
+  cursor: pointer
+
+.CodeMirror-hints input
+  display: none
+
+.CodeMirror-hints .selected
+  background: #03A9F4
+  color: #FFF
+
+.CodeMirror-hints ul::-webkit-scrollbar-thumb

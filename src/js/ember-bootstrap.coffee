@@ -1,15 +1,6 @@
-#= require_self
-#= require handlebars
-#= require ./vendor/ember/ember-1.6.0.beta.2.js
-#= require ./vendor/ember/ember-model
-
 window.EmberENV =
   FEATURES:
     'query-params-new': true
-
-#require './vendor/handlebars.js'
-#require './vendor/ember.js'
-#require './vendor/ember-model.js'
 
 Em = Ember
 window.NitrousIO = Em.Application.extend Em.Evented,

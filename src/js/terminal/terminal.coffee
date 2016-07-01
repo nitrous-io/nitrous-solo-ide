@@ -1,4 +1,6 @@
-require './socket/socket-connection'
+require '../vendor/polyfills'
+require '../lib/socket/socket-connection'
+require 'script!../vendor/term'
 
 parentWindow = window.parent
 parentWindow = null if parentWindow == window

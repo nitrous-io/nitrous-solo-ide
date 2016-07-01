@@ -1,0 +1,66 @@
+@import '../variables'
+
+#ide-console-view
+  display: flex
+  flex-shrink: 0
+  flex-direction: column
+  position: relative
+  height: 165px
+  border-top: 1px solid $n2oGray1000
+  z-index: 10
+
+  .console-sessions
+    display: flex
+    flex-grow: 1
+    background: $n2oGray900
+
+    .ide-console-session-view
+      display: none
+      flex-direction: row
+      flex-grow: 1
+      border: 0
+      margin: 0
+      background: black
+
+      &.active
+        display: flex
+
+      .terminal-screen
+        display: flex
+        flex-direction: column
+        flex-grow: 1
+
+        iframe
+          flex-grow: 1
+          border: none
+
+  &.hide
+    display: none
+
+  &.fullscreen
+    position: absolute
+    top: 0
+    left: 0
+    width: 100% !important
+    height: 100% !important
+    border-top: none
+
+    .ide-pane-border-view
+      display: none
+
+  &.minimized
+    height: auto !important
+
+    .ide-toolbar
+      border-bottom: 0
+
+    .console-sessions
+      display: none
+
+html.msie
+  #ide-console-view
+    .console-sessions
+      .ide-console-session-view
+        .terminal-screen
+          iframe
+            height: 0

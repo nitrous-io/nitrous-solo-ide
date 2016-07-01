@@ -1,0 +1,1127 @@
+@import 'variables'
+@import 'mixins'
+
+.ui.card
+  +card
+
+  .card-header
+    height: $barHeight
+    line-height: $barHeight
+    color: $n2oGray300
+    margin: 0
+    padding: 0 $containerPadding
+    font-size: 18px
+    font-weight: 400
+    border-radius: 2px 2px 0 0
+    +truncate
+
+    &.bordered
+      background: $n2oGray700
+      border-bottom: 1px solid $n2oGray900
+
+    &.tab-bar-title
+      background: $n2oGray700
+
+      .divider
+        padding: 0 12px
+
+      > h2
+        display: inline-block
+        margin-right: 6px
+
+    h2
+      font-size: $fontSizeLarge
+      font-weight: 500
+      margin: 0
+      color: $n2oGray100
+
+  .card-body
+    padding: $containerPadding
+
+    &.clear-top
+      padding-top: 0
+
+    > .right
+      text-align: right
+
+  .card-footer
+    padding: $containerPadding
+    display: flex
+    flex-direction: row
+
+    > .left, > .right
+      flex-grow: 1
+
+    > .left
+      display: flex
+      align-items: center
+
+    > .right
+      text-align: right
+      flex-shrink: 0
+      white-space: nowrap
+
+    p
+      margin: 0
+      width: 100%
+      font-size: 12px
+      line-height: 43px
+      color: $n2oGray500
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+
+  .card-body, .card-footer, .footer-note
+    &.bordered
+      border-top: 1px solid $n2oGray900
+
+  .footer-note
+    padding: $containerPadding
+    padding-top: 0
+    display: flex
+    flex-direction: row
+    text-align: center
+
+    p
+      padding: 0 20px
+      font-size: 12px
+      color: #828e98
+      line-height: 18px
+
+
+.ui.dropdown-triangle
+  display: inline-block
+  margin-left: 5px
+  width: 0
+  height: 0
+  vertical-align: middle
+  border: 5px solid
+  border-left-color: transparent
+  border-right-color: transparent
+  border-bottom: none
+
+.ui.dropdown
+  user-select: none
+
+  div.free
+    background: $lightBlue500
+    color: #FFF
+    text-transform: uppercase
+    position: relative
+    font-size: 8px
+    line-height: 22px
+    padding: 2px 4px
+    margin-left: 4px
+    margin-right: 6px
+    border-radius: 2px
+    display: inline
+    top: -2px
+
+  &.open
+    ul.dropdown-menu
+      z-index: 11
+      transition: opacity 0
+      opacity: 1
+
+  ul.dropdown-menu
+    position: absolute
+    z-index: 10
+    left: 0
+    right: auto
+    margin: 0
+    padding: 8px 0
+    list-style: none
+    white-space: nowrap
+    font-size: $fontSizeSmall
+    transition: opacity .2s
+    opacity: 0
+    +card
+    +light-shadow
+    border-radius: 0 0 2px 2px
+    $dropdownMenuItemHeight: 32px
+    background: $n2oGray700
+    display: none
+    text-align: left
+
+    > li
+      &.separator
+        height: 0
+        border-top: 1px solid $n2oGray600
+        margin: 8px 0
+
+      > a, > span
+        display: block
+        height: $dropdownMenuItemHeight
+        line-height: $dropdownMenuItemHeight
+        padding: 0 24px
+        color: $n2oGray200
+        transition: background-color .2s
+
+        .fa
+          width: 24px
+          margin-left: -24px
+          text-align: center
+
+        &:hover
+          background: $n2oGray500
+
+      &.disabled
+        > a
+          color: $n2oGray400
+          cursor: not-allowed
+
+          &:hover
+            background: transparent
+
+      &.dropdown-submenu
+        position: relative
+
+        > a:after
+          content: ' '
+          position: absolute
+          top: 11px
+          right: 19px
+          border: 5px solid
+          border-top-color: transparent
+          border-right-color: transparent
+          border-bottom-color: transparent
+
+        ul.dropdown-menu
+          display: none
+
+        &:hover
+          > a
+            background: $n2oGray500
+
+          ul.dropdown-menu
+            display: block
+            top: -8px
+            left: 100%
+            border-radius: 0 2px 2px 2px
+
+    &.right
+      left: auto
+      right: 0
+
+ul.ui.tab-bar
+  background: $n2oGray700
+  list-style: none
+  margin: 0
+  padding: 0
+  border-bottom: 1px solid $n2oGray900
+
+  > li
+    display: inline-block
+    height: $barHeight
+
+    a
+      display: inline-block
+      line-height: $barHeight
+      color: $n2oGray400
+      text-transform: uppercase
+      font-size: $fontSizeSmall
+      padding: 0 24px
+
+      &:hover
+        color: $lightBlue500
+
+    &.selected
+      box-shadow: inset 0 -2px 0 $lightBlue500
+
+      a
+        color: $lightBlue500
+
+    &.disabled
+      a
+        opacity: 0.4
+        cursor: not-allowed
+
+        &:hover
+          color: inherit
+
+table.ui.table
+  width: 100%
+  margin: 8px 0
+  font-size: $fontSizeSmall
+
+  tr
+    height: 32px
+    line-height: 32px
+
+    &:last-of-type
+      th, td
+        border-bottom: none
+
+  th, td
+    padding: 0 8px
+
+  th
+    color: $n2oGray400
+    font-size: 12px
+    font-weight: 500
+    text-transform: uppercase
+    text-align: left
+
+    .trial-ends
+      background: $lightBlue800
+      padding-right: 7px
+      padding-bottom: 30px
+      height: 0
+      width: 80px
+      border-radius: 2px
+      color: white
+      float: right
+      
+  td
+    span.empty
+      color: $gray300
+
+  &.horizontal
+    th
+      width: 160px
+      padding: 0 $containerPadding 0 0
+      text-align: right
+
+      &:first-of-type
+        border-bottom: 1px solid transparent
+
+.ui.btn
+  display: inline-block
+  padding: 12px 16px
+  font-size: $fontSizeSmall
+  text-transform: uppercase
+  font-weight: 500
+  background: transparent
+  border: 0
+  border-radius: 2px
+  transition: background-color .2s, color .3s, opacity .3s
+  color: $n2oGray300
+  line-height: 1
+  margin-left: 1px
+  user-select: none
+
+  &:first-of-type
+    margin-left: 0
+
+  &:hover
+    background: rgba($n2oGray400, .2)
+
+  &:focus
+    background: rgba($n2oGray400, .2)
+    outline: none
+
+  &.active, &:active
+    background: rgba($n2oGray400, .4)
+
+  &.primary
+    color: $lightBlue500
+
+  &.secondary
+    color: $n2oGray50
+
+  &.danger
+    color: $red400
+
+  &.full
+    display: block
+    width: 100%
+
+  &.raised
+    background: rgba($n2oGray400, .2)
+
+    &:focus
+      background: rgba($n2oGray400, .4)
+      outline: none
+
+    &.active, &:active
+      background: rgba($n2oGray400, .6)
+
+    &:hover
+      background: rgba($n2oGray400, .4)
+
+  &:disabled, &[disabled], &.disabled
+    color: $n2oGray300
+    opacity: .26
+    cursor: not-allowed
+
+    &:hover, &:focus
+      background: none
+
+  &.raised.primary, &.pulsate
+    background: $lightBlue800
+    color: white
+
+    &:focus
+      background: $lightBlue600
+
+    &.active, &:active
+      background: $lightBlue700
+
+    &:hover
+      background: $lightBlue600
+
+    &:disabled, &[disabled], &.disabled
+      color: #f9f9f9
+      background: rgba(204, 204, 204, .1)
+
+  &.pulsate
+    animation: ui-btn-pulsate .9s alternate infinite
+
+  &.mini
+    width: 30px
+    height: 30px
+    padding: 6px 9px
+
+    span
+      display: none
+
+  i.spinner
+    margin: 0 8px 0 0
+
+  &.toggle-button
+    &.on
+      color: $lightBlue500
+      transition: box-shadow .2s
+      box-shadow: inset 0 -2px 0 $lightBlue500
+
+a.ui.btn
+  text-decoration: none
+
+.ui.input-group
+  margin-bottom: 16px
+
+  &:last-of-type
+    margin-bottom: 0
+
+  label.field-label
+    display: block
+    margin: 0 0 8px 0
+    color: $n2oGray400
+    font-size: 13px
+
+    &:first-of-type
+      margin-top: 0
+
+  input[type=text], input[type=password], input[type=search], input[type=email], input[type=url], input[type=number], textarea
+    +appearance(none)
+    display: block
+    width: 100%
+    border: 1px solid transparent
+    background: $n2oGray850
+    border-radius: 2px
+    outline: none
+    line-height: initial
+    transition: color .2s, border-color .2s, background-color .2s
+
+    &:focus
+      outline: none
+      border: 1px solid $lightBlue800
+
+    &:disabled, &[disabled], &.disabled
+      opacity: 0.4
+
+    &.error
+      border: 1px solid $red300
+
+  input[type=text], input[type=password], input[type=search], input[type=email], input[type=url], input[type=number]
+    height: 38px
+    padding: 8px
+
+  textarea
+    transition: height .2s
+    padding: 8px
+
+  .note
+    font-size: 11px
+
+  #feedback-message
+    resize: none
+
+.ui.select
+  position: relative
+  display: block
+  overflow: hidden
+  line-height: initial
+
+  &:after
+    content: ' '
+    position: absolute
+    top: 18px
+    right: 8px
+    border: 5px solid $n2oGray500
+    border-left-color: transparent
+    border-right-color: transparent
+    border-bottom: none
+
+  select
+    position: relative
+    +appearance(none)
+    display: block
+    width: 100%
+    height: 38px
+    background: $n2oGray850
+    border: none
+    border-radius: 2px
+    padding: 8px 26px 8px 8px
+    outline: none
+    transition: color .3s
+
+    &:focus
+      outline: none
+
+    &:disabled, &[disabled], &.disabled
+      opacity: 0.4
+
+.ui.checkbox
+  position: relative
+  display: inline-block
+  height: 20px
+  vertical-align: text-bottom
+
+  input[type=checkbox], input[type=radio]
+    position: relative
+    width: 20px
+    height: 20px
+    cursor: pointer
+    vertical-align: top
+    z-index: 1
+    opacity: 0
+
+    &:focus
+      outline: none
+
+    &:disabled, &[disabled], &.disabled
+      cursor: not-allowed
+
+    + label:before, + label:after
+      display: block
+      content: ' '
+      position: absolute
+      top: 0
+      left: 0
+      width: 20px
+      height: 20px
+      z-index: 0
+      user-select: none
+
+    + label:before
+      transition: background-color .2s, border-color .2s, color .2s
+      background: $n2oGray850
+      border: 2px solid $n2oGray500
+      text-align: center
+      font-family: FontAwesome
+      font-size: $fontSizeSmall
+      line-height: 16px
+      color: rgba(0, 0, 0, 0)
+      +grayscale-font-smoothing
+
+    &:checked + label:before
+      border-color: $green300
+      color: white
+
+    &:disabled, &[disabled], &.disabled
+      + label:before
+        opacity: 0.4
+
+  input[type=checkbox]
+    + label:before
+      border-radius: 2px
+
+    &:checked + label:before
+      background: $green300
+      content: "\f00c"
+
+    &:disabled, &[disabled], &.disabled
+      &:checked + label:before
+        opacity: 0.4
+
+  input[type=radio]
+    + label:before
+      border-radius: 10px
+      font-size: 9px
+
+    &:checked + label:after
+      border-radius: 5px
+      width: 10px
+      height: 10px
+      top: 5px
+      left: 5px
+      background: white
+      transition: background-color .2s
+
+    &:checked + label:after
+      background: $green300
+
+    &:disabled, &[disabled], &.disabled
+      &:checked + label:after
+        opacity: 0.4
+
+ul.ui.checkbox-group
+  list-style: none
+  margin: 8px 0
+  padding: 0
+
+  .ui.checkbox
+    top: 1px
+
+    > input[type=radio], > input[type=checkbox]
+      margin-right: 16px
+
+  > li
+    line-height: 40px
+    padding: 0 16px
+
+    > label
+      transition: color .2s
+      color: $n2oGray200
+      font-size: 14px
+
+  &.horizontal
+    display: flex
+    flex-direction: row
+
+  &.disabled
+    > li
+      > label
+        color: $gray400
+        cursor: not-allowed
+
+.ui.file-picker
+  position: relative
+  display: inline-block
+
+  &:before
+    content: 'Choose File'
+
+  input[type=file]
+    position: absolute
+    opacity: 0
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+
+.ui.icon-picker
+  display: inline-block
+  margin-right: 16px
+  border-radius: 2px
+  opacity: .3
+  border: 2px transparent
+  text-align: center
+  transition: opacity .1s, box-shadow .1s, filter .1s
+  filter: grayscale(100%)
+  -webkit-transform: translateZ(0)
+
+  label
+    font-weight: 500
+    font-size: 12px
+    text-transform: uppercase
+
+  .bg, .icon
+    background-size: 100px 100px
+    background-repeat: no-repeat
+    width: 100px
+    height: 100px
+    border-radius: 2px
+
+  .bg
+    position: relative
+    margin-bottom: 1px
+
+  .icon
+    position: absolute
+    top: 0
+    left: 0
+    cursor: pointer
+
+  &.selected
+    opacity: 1
+    filter: grayscale(0%)
+
+  &.disabled
+    opacity: 0.2
+
+    &.selected
+      opacity: 0.6
+
+
+ul.ui.list
+  margin: 8px 0
+  padding: 0
+  list-style: none
+
+  .list-item
+    display: flex
+    flex-direction: row
+
+    &.item-error
+      .gravatar
+        position: relative
+
+        &:after
+          content: "\f06a"
+          font-family: FontAwesome
+          position: absolute
+          top: 0
+          left: 0
+          width: 36px
+          height: 36px
+          color: #3D464C
+          text-align: center
+          font-size: 14px
+          line-height: 36px
+
+      .lines h4
+        opacity: .5
+
+    span.sep
+      color: $gray400
+      margin: 0 5px
+
+      &:before
+        content: '-'
+
+    .left-accessory, .right-accessory
+      display: flex
+      align-items: center
+
+      .label
+        padding: 0 16px
+
+    .left-accessory
+      padding: 0 16px
+
+    .lines
+      flex-grow: 1
+      color: $gray800
+      font-size: $fontSizeSmall
+      font-weight: 400
+      padding: 0 16px
+
+      &.strike
+        h4, p
+          text-decoration: line-through
+
+      &.right
+        text-align: right
+
+      h4, p
+        margin: 0
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        transition: color .3s
+
+      h4
+        margin-bottom: 8px
+        font-size: $fontSizeMedium
+
+      p
+        color: $gray800
+
+        &.error
+          color: $red400 !important
+
+      &.disabled
+        h4, p
+          color: $gray400
+
+  &.with-separators
+    .list-item
+      .lines, .right-accessory
+        border-bottom: 1px solid $n2oGray900
+
+      .lines
+        padding-left: 0
+
+      &:last-of-type
+        .lines, .right-accessory
+          border-bottom: none
+
+  &.item-1-line
+    .list-item
+      height: 40px
+      line-height: 40px
+
+      .lines
+        h4, p
+          display: inline-block
+
+        h4
+          margin: 0 10px 0 0
+
+        p
+          color: $n2oGray400
+
+  &.item-2-line
+    .list-item
+      height: 72px
+
+      .lines
+        padding-top: 10px
+        padding-bottom: 10px
+
+        p
+          color: $n2oGray400
+
+  &.with-margins
+    .list-item .left-accessory
+      padding: 0 0 0 16px
+
+      .gravatar
+        background: $n2oGray850
+        margin-right: 0
+
+    .list-item:not(:last-of-type)
+      margin-bottom: 12px
+
+
+ul.ui.chips
+  margin: 12px 0
+  padding: 0
+  list-style: none
+
+  > li
+    display: inline-block
+    padding: 8px 12px
+    margin: 4px 8px 4px 0
+    font-size: $fontSizeSmall
+    background: $n2oGray700
+    border-radius: 16px
+    line-height: 16px
+
+    a.close
+      display: inline-block
+      width: 16px
+      margin-left: 4px
+      margin-right: -4px
+      text-align: center
+      font-style: normal
+      color: $n2oGray400
+      border-radius: 8px
+      transition: background-color .2s
+
+      &:hover
+        background: $n2oGray800
+
+    &.disabled
+      opacity: 0.6
+
+      a.close:hover
+        background: transparent
+
+ul.ui.snackbar
+  position: fixed
+  top: 0
+  right: 0
+  margin: 0
+  padding: 0
+  list-style: none
+  margin: 8px 24px
+  height: 0
+  transition: height 1s
+  pointer-events: none
+  text-align: right
+  z-index: 1000
+
+  .snackbar-item
+    margin-top: -48px
+    opacity: 0
+    right: 0
+    transition: opacity 1s, right 1s, margin-top 1s
+
+    p
+      display: inline-block
+      margin: 0
+      padding: 14px 24px 15px 24px
+      min-width: 288px
+      height: 48px
+      background: rgba($n2oGray50, 0.95)
+      border-radius: 2px
+      text-align: left
+      font-size: 14px
+      color: black
+      +light-shadow
+      pointer-events: initial
+
+      &:hover
+        cursor: pointer
+
+    &.fadein
+      margin-top: 16px
+      opacity: 1
+
+    &.fadeout
+      margin-top: 16px
+      position: relative
+      opacity: 0
+      right: -120%
+
+.ui.modal
+  position: fixed
+  display: none
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 100
+  justify-content: center
+  flex-direction: column
+
+  &:before
+    content: ''
+    position: fixed
+    background: rgba(0, 0, 0, .7)
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    opacity: 0
+    transition: opacity .3s
+
+  .ui.card
+    flex-grow: 0
+    flex-shrink: 0
+    width: 500px
+    max-height: 100%
+    overflow: auto
+    left: 0
+    right: 0
+    margin: 32px auto
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .5)
+    opacity: 0
+    transform: scale3d(0.7, 0.7, 1)
+    transition: opacity .10s, transform .08s
+
+    &.auto
+      width: auto
+
+    .card-header
+      padding: 24px 24px 0 24px
+      height: auto
+      line-height: normal
+      font-weight: 500
+      color: $n2oGray50
+
+      strong
+        text-transform: uppercase
+
+    .card-body
+      padding: 24px
+
+      p
+        margin: 0 0 16px 0
+        color: $n2oGray200
+        line-height: 1.5
+
+    .card-footer
+      padding: 0 16px 16px 16px
+
+  &.hide
+    display: none
+
+  &.flex
+    display: flex
+
+  &.show
+    &:before
+      opacity: 1
+
+    .ui.card
+      opacity: 1
+      transform: scale3d(1, 1, 1)
+
+.ui.progress
+  width: 100%
+  background: $n2oGray1000
+  height: 4px
+  opacity: 1
+  transition: height .3s, opacity .3s
+
+  &.hide
+    height: 0
+    opacity: 0
+
+  .bar
+    height: 100%
+    background: $lightBlue800
+    transition: width 2s
+
+    &.indeterminate
+      background-image: linear-gradient(90deg, $n2oGray1000 90%, $lightBlue800 90%)
+      background-size: 800px 4px
+      animation: ui-progress-indeterminate 1s linear infinite
+
+  &.danger
+    .bar
+      background: $red800
+
+      &.indeterminate
+        background-image: linear-gradient(90deg, $n2oGray1000 90%, $red800 90%)
+
+.ui.flex
+  display: flex
+
+  &.horizontal
+    flex-direction: row
+
+  &.vertical
+    flex-direction: column
+
+  > *
+    flex-grow: 1
+
+.ui.icon-btn
+  display: inline-block
+  font-size: 12px
+  background: rgba($n2oGray400, .2)
+  border-radius: 9px
+  width: 18px
+  height: 18px
+  line-height: 18px
+  transition: background-color .2s, color .3s
+  color: $n2oGray300
+  text-align: center
+  user-select: none
+
+  &:hover
+    color: $n2oGray200
+    background: rgba($n2oGray400, .4)
+
+  &.active, &:active
+    color: $n2oGray100
+    background: rgba($n2oGray400, .6)
+
+.ui.topnav
+  $topnavHeight: $barHeight
+
+  height: $topnavHeight
+  background: $n2oGray700
+  font-size: $fontSizeSmall
+  user-select: none
+
+  h1.logo
+    height: $topnavHeight
+    margin: 0
+    font-size: 18px
+    text-transform: uppercase
+
+    span
+      font-family: 'EurostileLTPro-BoldEx2'
+      color: white
+      +grayscale-font-smoothing
+
+    small
+      vertical-align: top
+      font-family: $mainFont
+      font-size: 9px
+      font-weight: 400
+      position: relative
+      top: -3px
+      margin-left: 2px
+      color: $n2oGray300
+
+  ul.nav
+    display: inline-block
+    margin: 0
+    padding: 0 4px
+    list-style: none
+
+    &.right
+      float: right
+
+    > li
+      position: relative
+      display: inline-block
+      vertical-align: bottom
+
+      > a, > span
+        display: inline-block
+        padding: 0 12px
+        color: $n2oGray200
+        line-height: $topnavHeight
+        transition: background-color .2s
+
+        &:hover
+          background: $n2oGray500
+
+      &.open
+        > a
+          background: $n2oGray500
+
+      &.primary
+        > a
+          color: $lightBlue500
+          font-weight: 500
+
+      a.nitrous-logo
+        margin-left: -4px
+
+.ui.selectable-list
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  margin: 0 -16px -16px 0
+  padding: 0
+  list-style: none
+
+  > li
+    position: relative
+
+    .content
+      user-select: none
+      background: $n2oGray850
+      margin: 0 16px 16px 0
+      padding: 8px
+      border-radius: 2px
+      border: 1px solid transparent
+      color: $n2oGray500
+      transition: border-color .3s, color .3s
+      cursor: pointer
+
+    .hover-info
+      pointer-events: none
+      position: absolute
+      margin-top: -7px
+      left: 0
+      top: 100%
+      width: 176px
+      z-index: 1
+      font-size: 12px
+      background: $n2oGray1000
+      padding: 10px
+      line-height: 1.5
+      white-space: pre-wrap
+      border-radius: 2px
+      transition: opacity .3s
+      transition-delay: 0
+      opacity: 0
+
+      &:before
+        position: absolute
+        left: 76px
+        bottom: 100%
+        content: ''
+        border: 8px solid transparent
+        border-bottom-color: $n2oGray1000
+
+    &.selected
+      .content
+        border: 1px solid $lightBlue800
+        color: $n2oGray100
+
+    .content:hover ~ .hover-info
+      opacity: 1
+      transition-delay: .5s
+
+@keyframes ui-progress-indeterminate
+  from
+    background-position: 0 0
+  to
+    background-position: 800px 0
+
+@keyframes ui-btn-pulsate
+  from
+    background-color: $lightBlue800
+  to
+    background-color: $lightBlue600

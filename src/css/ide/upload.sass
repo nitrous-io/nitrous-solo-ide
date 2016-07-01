@@ -1,0 +1,79 @@
+@import '../variables'
+
+#ide-upload-dialog-view
+  .ui.card
+    width: 600px
+
+  .drop-zone
+    display: flex
+    justify-content: center
+    flex-direction: column
+    height: 160px
+    text-align: center
+    border-radius: 8px
+    border: 2px dashed $n2oGray600
+
+    > p
+      margin: 0
+
+  .browse-btn
+    position: relative
+    overflow: hidden
+    cursor: pointer
+    vertical-align: middle
+    margin: 0 8px
+
+    .file-input
+      position: absolute
+      top: 0
+      left: 0
+      height: 100%
+      padding-left: 200%
+      opacity: 0
+      cursor: pointer
+      background: transparent
+      border-color: transparent
+
+  .card-body
+    font-size: 14px
+
+  ul.upload-list
+    margin: 16px 0 0 0
+    padding: 0
+    list-style: none
+
+    li
+      display: flex
+      flex-direction: row
+      border-bottom: 1px solid $n2oGray700
+      padding: 2px 0
+
+      &:last-of-type
+        border-bottom: none
+
+      .left
+        margin: 0
+        padding: 12px 0
+        flex-grow: 1
+        line-height: 1
+
+        .info
+          padding: 0 0 0 6px
+          font-size: 12px
+
+      .right
+        display: flex
+        flex-shrink: 0
+        flex-direction: column
+        justify-content: center
+
+        .ui.progress
+          width: 150px
+
+          &.failed
+            background: $red800
+
+            .bar
+              height: 100%
+              background: $red800
+              transition: none

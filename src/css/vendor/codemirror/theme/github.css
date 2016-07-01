@@ -1,0 +1,50 @@
+/*
+
+    Name:       Github
+    Adapted from the Light Github-like theme for Brackets editor
+
+*/
+
+.cm-s-github {line-height: 1.45em; color-profile: sRGB; rendering-intent: auto;}
+
+.cm-s-github .cm-keyword{color:#a71d5d}
+.cm-s-github .cm-atom{color:#0086b3}
+.cm-s-github .cm-number{color:#0086b3}
+.cm-s-github .cm-def{color:#333}
+.cm-s-github .cm-variable{color:#333}
+.cm-s-github .cm-variable-2{color:#333}
+.cm-s-github .cm-variable-3{color:#0086b3}
+.cm-s-github .cm-property{color:#0086b3}
+.cm-s-github .cm-operator{color:#a71d5d}
+.cm-s-github .cm-comment{color:#969896}
+.cm-s-github .cm-string{color:#e56016}
+.cm-s-github .cm-string-2{color:#333}
+.cm-s-github .cm-meta{color:#c66}
+.cm-s-github .cm-error{color:#c66;border-bottom:1px dashed #c66}
+.cm-s-github .cm-qualifier{color:#795da3}
+.cm-s-github .cm-builtin{color:#333}
+.cm-s-github .cm-bracket{color:#333}
+.cm-s-github .cm-tag{color:#63a35c}
+.cm-s-github .cm-attribute{color:#795da3}
+.cm-s-github .cm-header{color:#a71d5d}
+.cm-s-github .cm-quote{color:#795da3}
+.cm-s-github .cm-hr{color:#e56016}
+.cm-s-github .cm-link{color:#0086b3}
+.cm-s-github .cm-rangeinfo{color:#333}
+.cm-s-github .cm-minus{color:#c66}
+.cm-s-github .cm-plus{color:#333}
+.cm-s-github,.cm-s-github .cm-s-github-scroll{background-color:#f8f8f8;color:#333}
+.cm-s-github .cm-s-github-selected{background-color:#424242}
+.cm-s-github-focused .cm-s-github-selected{background-color:#b3cde7}
+.cm-s-github .cm-s-github-gutters{background-color:#f8f8f8}
+.cm-s-github-activeline .cm-s-github-gutter-elt{color:#333!important}
+.cm-s-github-gutter-elt{color:#969896!important}
+.cm-s-github .cm-s-github-matchingbracket{color:#333!important;background-color:#b3cde7}
+.cm-s-github .cm-s-github-linenumber{color:rgba(96,96,96,0.2)}
+.cm-s-github-activeline-background,.cm-s-github-activeline .cm-s-github-gutter-elt{background-color:#ebefef!important}
+.cm-s-github-matchingtag{background-color:#daebfd}
+.cm-s-github .cm-s-github-cursor{border-left:1px solid #333!important}
+.cm-s-github .cm-s-github-overwrite .cm-s-github-cursor{border-left:none!important;border-bottom:1px solid #333;width:1.2ex}
+.bookmark .cm-s-github-linenumber{color:#fff!important;background-color:#1e90ff!important}
+
+.cm-s-github .CodeMirror-ruler {border-color: #ebefef !important;}

@@ -1,3 +1,3 @@
 App.Router.map ->
-  #@route 'blank'
+  @route 'blank'
   @resource 'ide', path: '/:containerSlug'

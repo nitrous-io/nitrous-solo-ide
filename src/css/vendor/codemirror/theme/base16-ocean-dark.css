@@ -1,0 +1,35 @@
+/*
+    Name:       Base16 Ocean Dark
+    Author:     Chris Kempson (http://chriskempson.com)
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg/base16-codemirror)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+*/
+
+.cm-s-base16-ocean-dark {line-height: 1.45em; color-profile: sRGB; rendering-intent: auto;}
+
+.cm-s-base16-ocean-dark.CodeMirror {background: #2b303b; color: #dfe1e8;}
+.cm-s-base16-ocean-dark div.CodeMirror-selected {background: #343d46 !important;}
+.cm-s-base16-ocean-dark .CodeMirror-gutters {background: #2b303b; border-right: 1px solid transparent !important;}
+.cm-s-base16-ocean-dark .CodeMirror-guttermarker-subtle { color: #65737E !important; }
+.cm-s-base16-ocean-dark .CodeMirror-linenumber {color: #65737e;}
+.cm-s-base16-ocean-dark .CodeMirror-cursor {border-left: 1px solid #a7adba !important;}
+
+.cm-s-base16-ocean-dark span.cm-comment {color: #ab7967;}
+.cm-s-base16-ocean-dark span.cm-atom {color: #b48ead;}
+.cm-s-base16-ocean-dark span.cm-number {color: #b48ead;}
+
+.cm-s-base16-ocean-dark span.cm-property, .cm-s-base16-ocean-dark span.cm-attribute {color: #a3be8c;}
+.cm-s-base16-ocean-dark span.cm-keyword {color: #bf616a;}
+.cm-s-base16-ocean-dark span.cm-string {color: #ebcb8b;}
+
+.cm-s-base16-ocean-dark span.cm-variable {color: #a3be8c;}
+.cm-s-base16-ocean-dark span.cm-variable-2 {color: #8fa1b3;}
+.cm-s-base16-ocean-dark span.cm-def {color: #d08770;}
+.cm-s-base16-ocean-dark span.cm-error {background: #bf616a; color: #a7adba;}
+.cm-s-base16-ocean-dark span.cm-bracket {color: #dfe1e8;}
+.cm-s-base16-ocean-dark span.cm-tag {color: #bf616a;}
+.cm-s-base16-ocean-dark span.cm-link {color: #b48ead;}
+
+.cm-s-base16-ocean-dark .CodeMirror-activeline-background {background: #343D46 !important;}
+.cm-s-base16-ocean-dark .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
+.cm-s-base16-ocean-dark .CodeMirror-ruler {border-color: rgba(255,255,255,.2) !important;}

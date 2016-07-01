@@ -1,0 +1,289 @@
+@import './vendor/normalize.css'
+@import './vendor/eurostile-font'
+@import './vendor/source-code-pro-font'
+@import './vendor/font-awesome/stylesheets/font-awesome'
+@import 'variables'
+@import 'mixins'
+@import 'ui'
+
+html
+  background: $n2oGray900
+  color: $n2oGray100
+
+*, *:before, *:after
+  box-sizing: border-box
+  min-width: 0
+  min-height: 0
+
+body
+  font-size: $fontSizeMedium
+
+html.wf-active body
+  font-family: $mainFont
+
+html.wf-active .monospace
+  font-family: $monospaceFont
+
+code, kbd, pre, samp
+  font-family: $monospaceFont
+
+h1, h2, h3, h4
+  margin: 8px 0
+  color: $n2oGray200
+
+h1
+  font-size: $fontSize2XLarge
+  font-weight: 300
+
+h2
+  font-size: $fontSizeXLarge
+  font-weight: 300
+
+h3
+  font-size: $fontSizeLarge
+  font-weight: 500
+
+h4
+  font-size: $fontSizeMedium
+  font-weight: 400
+
+a
+  text-decoration: none
+  color: $lightBlue300
+  transition: color .2s
+  outline: none
+
+  &:link
+    color: $lightBlue300
+  &:visited
+    color: $lightBlue300
+  &:hover
+    color: $lightBlue200
+  &:active
+    color: $lightBlue200
+
+html
+  input, textarea, button, select
+    &:disabled, &[disabled]
+      cursor: not-allowed
+
+input, textarea
+  +placeholder-color($n2oGray600)
+
+label
+  user-select: none
+  cursor: pointer
+
+hr
+  border: none
+  border-bottom: 1px solid $n2oGray300
+  margin: 16px 0
+
+abbr[title]
+  border-bottom: 1px dotted $n2oGray500
+
+.container
+  width: 1000px
+  margin: 0 auto
+
+.truncate
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.no-text-transform
+  text-transform: none
+
+i.spinner
+  margin: 0 16px
+  display: inline-block
+  line-height: 1
+  animation: fa-spin 2s infinite linear
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  text-decoration: none
+  +grayscale-font-smoothing
+
+  &:before
+    content: "\f1ce"
+
+.hint-text, .error-text
+  color: $n2oGray400
+  font-size: 12px
+  font-weight: 500
+  text-transform: uppercase
+
+  &.with-padding
+    padding: 0 16px
+
+  &.no-caps
+    text-transform: none
+
+  i
+    margin-right: 5px
+
+.error-text
+  color: $n2oGray200
+
+ul.dashboard
+  color: $n2oGray400
+  font-size: $fontSizeSmall
+  li
+    margin: 4px 0
+
+ul.comma-separated, ul.space-separated, ul.dash-separated, ul.pipe-separated
+  margin: 0
+  padding: 0
+  list-style: none
+
+  > li
+    display: inline
+
+    &:last-of-type:after
+      content: ''
+
+ul.pipe-separated
+  > li
+    &:after
+      content: ''
+      border-right: 1px solid $n2oGray600
+      margin: 0 8px
+
+    &:last-of-type:after
+      border-right: none
+
+ul.dash-separated
+  > li
+    &:after
+      content: ' - '
+      margin: 0 4px
+
+ul.comma-separated
+  > li
+    &:after
+      content: ', '
+
+ul.space-separated
+  > li
+    &:after
+      content: ' '
+
+  &.blocks
+    > li
+      background: $n2oGray700
+      padding: 0 5px
+      border-radius: 2px
+      margin-right: 5px
+
+      &:after
+        content: ''
+
+.page-header, .page-footer
+  flex-shrink: 0
+
+.page-footer
+  .container
+    display: flex
+    font-size: $fontSizeSmall
+    margin-top: $containerPadding + 10px
+    padding: $containerPadding
+    padding-top: 0
+    color: $n2oGray600
+
+    p, ul, li
+      display: inline
+      padding: 0
+      margin: 0
+
+    p
+      padding-right: 6px
+
+    ul
+      list-style: none
+
+      li
+        padding-left: 16px
+
+    .left, .right
+      flex-grow: 1
+
+    .right
+      text-align: right
+
+    a
+      color: $n2oGray400
+
+      &:hover
+        color: $n2oGray200
+
+.notice-text
+  padding: 10px 12px
+  margin-bottom: 16px
+  border-radius: 2px
+  background: $n2oGray300
+  color: $n2oGray1000
+  font-size: $fontSizeSmall
+  text-align: center
+
+  .fa
+    color: $n2oGray700
+    padding-right: 6px
+
+  &.multi-line
+    display: flex
+    flex-direction: row
+    align-items: baseline
+
+    .group
+      padding: 0 0 0 8px
+
+  h5
+    margin: 0
+    font-size: 12px
+    letter-spacing: 0.5px
+    text-transform: uppercase
+    margin: 0 0 8px 0
+    font-weight: 500
+    color: $n2oGray800
+
+  p
+    margin: 0
+
+  a
+    color: $n2oGray850
+    text-decoration: underline
+
+  &.error
+    color: white
+    background-color: $red400
+
+    a
+      color: white
+      text-decoration: underline
+
+    .fa
+      color: white
+
+.gravatar
+  position: relative
+  width: 24px
+  height: 24px
+  vertical-align: middle
+  margin-right: 7px
+  background: $n2oGray200
+  border-radius: 2px
+
+  &.medium
+    width: 36px
+    height: 36px
+
+.note-text
+  margin: 0
+  font-size: $fontSizeSmall
+  line-height: 25px
+  color: $n2oGray400
+
+@import 'codemirror'
+@import 'web_app'
+@import 'ide'

@@ -3,8 +3,6 @@ require 'script!./vendor/handlebars.js'
 require 'script!./vendor/ember.js'
 require 'script!./vendor/ember-model.js'
 
-
-
 window._ = require './vendor/underscore'
 require './vendor/md5'
 require './vendor/mousetrap'

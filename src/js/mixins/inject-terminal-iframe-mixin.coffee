@@ -18,8 +18,8 @@ App.InjectTerminalIframeMixin = Em.Mixin.create
 
     #cssPath = App.get('terminalCssPath')
     #jsPath = App.get('terminalJsPath')
-    cssPath = "https://www.n2odev.com:7000/term.css"
-    jsPath = "https://www.n2odev.com:7000/term.js"
+    cssPath = "/assets/terminal.css"
+    jsPath = "/assets/terminal.js"
 
     origin = location.protocol + "//" + location.host
 
