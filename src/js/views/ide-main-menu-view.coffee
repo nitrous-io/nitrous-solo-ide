@@ -114,9 +114,6 @@ App.IdeMainMenuView = Em.View.extend
       menuItem 'Updates',
         url: 'https://community.nitrous.io/posts/tagged/changelog'
         target: '_blank'
-      separator
-      menuItem 'Report an Issue...', callback: (controller) ->
-        App.trigger 'open-feedback-dialog', 'Report an Issue', 'Your request has been submitted. Our support team will email you soon.'
     )
     items
   ).property 'App.container', 'App.container.env', 'App.container.env.NITROUS_README_URL'
