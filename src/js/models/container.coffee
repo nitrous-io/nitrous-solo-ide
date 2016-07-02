@@ -88,31 +88,6 @@ App.Container = klass = Em.Object.extend
     publicPorts.sortBy('containerPort')
   ).property 'config', 'config.port.@each'
 
-  scripts: (->
-    scripts = @get('config.scripts')
-    return scripts if !scripts
-
-    newScripts = {}
-
-    # Convert known keys to English.
-    keys = Object.keys(scripts)
-    keys = keys.sort()
-    keys.forEach (k) ->
-      switch k
-        when 'start'
-          # Ignore it. This is run whenever the container is started and should
-          # not appear.
-          ;
-        when 'post-create'
-          # Ignore it. This is run whenever the container is created by Quickstart
-          # and should not appear.
-          ;
-        else
-          newScripts[k] = scripts[k]
-
-    newScripts
-  ).property 'config', 'config.scripts'
-
   validPreviewPort: (port) ->
     port == 80 || port >= 1024
 

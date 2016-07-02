@@ -89,16 +89,6 @@ App.IdeMainMenuView = Em.View.extend
     ]
   ).property 'App.container', 'App.container.previewablePorts.@each'
 
-  nitrousScriptsItems: (->
-    scripts = App.get('container.scripts')
-    return scripts if !scripts
-
-    keys = Object.keys(scripts)
-    keys.map (k) ->
-      menuItem k, callback: (controller) ->
-        controller.nitrousScriptsRun(k, scripts[k])
-  ).property 'App.container', 'App.container.scripts'
-
   helpMenuItems: (->
     items = []
     if App.get('container.env.NITROUS_README_URL')
@@ -401,10 +391,6 @@ App.IdeMainMenuView = Em.View.extend
             controller.gitCloneFromGitHub()
       ]
     ]
-
-    scriptItems = @get('nitrousScriptsItems')
-    if scriptItems = @get('nitrousScriptsItems')
-      base.push(menu('Run', scriptItems))
 
     base.push(menu 'Collaborate', [
       menuItem 'Invite Collaborators',

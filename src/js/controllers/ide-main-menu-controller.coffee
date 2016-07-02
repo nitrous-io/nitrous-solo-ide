@@ -212,12 +212,6 @@ App.IdeMainMenuController = Em.Controller.extend
     if controller = @get 'controllers.ideGit'
       controller.showCloneFromGitHubDialog()
 
-  nitrousScriptsRun: (name, command) ->
-    @windowFocusConsole()
-
-    consoleController = @get 'controllers.ideConsole'
-    consoleController.runInActiveTab(command)
-
   showConfirmStopHostDialog: ->
     ui.showModal '#confirm-stop-host-dialog'
 
