@@ -17,28 +17,15 @@ App.IdeConsoleController = Em.ArrayController.extend App.IdeTabControllerMixin, 
   reset: ->
     @set 'content', null
 
-  makeUrlAndConnect: (terminal, session) ->
+  makeUrlAndConnect: (terminal) ->
     return unless container = App.get('container')
     @makeUrl(container, terminal, 'shell').then (url) =>
       # continue to load the terminal
       terminal.url = url
       terminal.open(true)
       terminal.focus()
-
-      if session.get('initCommand')
-        @runCommand(terminal, session.get('initCommand'))
-
     , (jqxhr) ->
       terminal.retry()
-
-  runCommand: (terminal, command) ->
-    if terminal.conn.ws.readyState == 1
-      terminal.conn.send("d|#{command} \n")
-    else
-      unless terminal.closed
-        Ember.run.later( =>
-          @runCommand(terminal, command)
-        , 1000)
 
   addTab: (tab, settings = {}) ->
     empty = @get('content.length') == 0

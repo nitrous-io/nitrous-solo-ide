@@ -382,11 +382,6 @@ App.IdeMainMenuView = Em.View.extend
             controller.windowShowFileTree()
       ]
       menu 'Preview', @get('previewItems')
-      menu 'Git', [
-        menuItem 'Clone from GitHub',
-          callback: (controller) ->
-            controller.gitCloneFromGitHub()
-      ]
     ]
 
     base.push(menu 'Collaborate', [

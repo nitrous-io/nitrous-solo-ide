@@ -69,7 +69,7 @@ App.IdeConsoleSessionView = Em.View.extend App.InjectTerminalIframeMixin,
         terminal.ide = true
         terminal.term.write 'Connecting...'
         terminal.willOpen = =>
-          controller.makeUrlAndConnect(terminal, consoleSession)
+          controller.makeUrlAndConnect(terminal)
         terminal.didBlur = =>
           consoleSession.set 'focused', false
         terminal.didChangeTitle = (title) =>

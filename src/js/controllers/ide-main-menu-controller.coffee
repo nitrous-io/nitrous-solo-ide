@@ -6,7 +6,7 @@ activeDocumentSet = (attr, val) ->
     tab.set attr, val
 
 App.IdeMainMenuController = Em.Controller.extend
-  needs: ['ide', 'ideEditor', 'ideConsole', 'ideFindInProject', 'ideFileFinder', 'ideSidebar', 'ideGit']
+  needs: ['ide', 'ideEditor', 'ideConsole', 'ideFindInProject', 'ideFileFinder', 'ideSidebar']
   initialize: ->
     this._reloadUserUsage()
 
@@ -207,10 +207,6 @@ App.IdeMainMenuController = Em.Controller.extend
 
   betaToggleAutoCompleteBeta: ->
     @_toggleEditorProperty 'autoCompleteBeta'
-
-  gitCloneFromGitHub: ->
-    if controller = @get 'controllers.ideGit'
-      controller.showCloneFromGitHubDialog()
 
   showConfirmStopHostDialog: ->
     ui.showModal '#confirm-stop-host-dialog'

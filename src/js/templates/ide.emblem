@@ -15,6 +15,5 @@ App.IdeResumeSessionDialogView
 App.IdeStartProjectDialogView
 App.IdeFindInProjectDialogView controller=controllers.ideFindInProject
 App.IdeFileFinderDialogView controller=controllers.ideFileFinder
-App.IdeCloneFromGitHubView controller=controllers.ideGit
 
 = outlet feedback

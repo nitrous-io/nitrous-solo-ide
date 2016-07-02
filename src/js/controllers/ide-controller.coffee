@@ -8,7 +8,7 @@ autoShutdownUser = 'host-provisioner' # username of system user that initiates a
 
 App.IdeController = Em.ObjectController.extend
   queryParams: ['codeDir']
-  needs: ['ideFindInProject', 'ideFileFinder', 'ideGit']
+  needs: ['ideFindInProject', 'ideFileFinder']
 
   codeDir: null # directory where project code lives under ~/code.
 
@@ -62,7 +62,6 @@ App.IdeController = Em.ObjectController.extend
       router.get('ideSidebarController').initialize()
       router.get('ideEditorController').initialize()
       router.get('ideConsoleController').initialize()
-      router.get('ideGitController').initialize()
 
       PubSub.subscribe 'error.message', (msg, data) =>
         @set('errorDialog', data)
