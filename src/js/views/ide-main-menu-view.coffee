@@ -399,15 +399,6 @@ App.IdeMainMenuView = Em.View.extend
         target: '_blank'
     ])
 
-    base.push(menu 'PubStorm', [
-      menuItem 'Getting Started Guide',
-        url: 'http://help.pubstorm.com/getting-started/getting-started'
-        target: '_blank'
-      menuItem 'Adding a Custom Domain',
-        url: 'http://help.pubstorm.com/getting-started/custom-domains'
-        target: '_blank'
-    ])
-
     base.push(menu 'Help', @get('helpMenuItems'))
 
     base
