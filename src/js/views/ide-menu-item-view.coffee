@@ -19,7 +19,6 @@ App.IdeMenuItemView = Em.View.extend
     return false if content.get('separator') || content.get('disabled')
     unless content.get 'url'
       content.get('callback').call(content, @get 'controller')
-    #Mp.track content.get('track')
     true
 
   bindMousetrapKey: ->

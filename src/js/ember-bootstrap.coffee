@@ -55,11 +55,6 @@ window.NitrousIO = Em.Application.extend Em.Evented,
       window.localStorage.removeItem('token')
   ).observes 'token'
 
-  activateMixpanel: (->
-    #if @get('user') && settings = @get('settings')
-      #Mp.init(settings.mixpanel_token)
-  ).observes 'user', 'settings'
-
   dashboardURL: ( ->
     "/app/#/containers/#{App.get 'container.slug'}"
   ).property 'App.container.slug'

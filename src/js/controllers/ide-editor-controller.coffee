@@ -149,8 +149,6 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
         if err
           App.set 'flashMessage', { type: 'alert-error', text: "Error saving file '#{path.get('absolutePath')}'" }
           return
-        #Mp.track Mp.EventIDEUserSavedFile, new_file: 'false'
-        #Mp.increment Mp.PropertyIDEFileSaveCount
         doc.set 'documentLastUpdated', Date.now()
 
         doc.set 'clean', true
@@ -204,13 +202,10 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
       sidebarController = App.get 'router.ideSidebarController'
       sidebarController.refreshPath path.get('parentAbsolutePath')
       @set 'saveDialog.hide', true
-      #Mp.track Mp.EventIDEUserSavedFile, new_file: 'true'
-      #Mp.increment Mp.PropertyIDEFileSaveCount
     saveDialog.set 'saving', false
 
   addTab: ->
     @_super.apply this, arguments
-    #Mp.track Mp.EventIDEUserOpenedFile
     @trackActivity()
 
   # omit `path` or provide `multiple=true` in attrs to allow for multiple tabs

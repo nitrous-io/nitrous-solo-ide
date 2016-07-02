@@ -143,13 +143,6 @@ klass = class Ruby extends PluginBase
 
   autocomplete: (cm, callback, options)->
     options ||= {}
-    options.handlers = {
-      pick: [
-        ->
-          #Mp.track Mp.EventIDEAutocompletePicked
-          #Mp.increment Mp.PropertyIDEAutocompletePickedCount
-        ]
-    }
 
     cursor = cm.getCursor()
     line = cm.getRange({line: cursor.line, ch: 0}, cursor)

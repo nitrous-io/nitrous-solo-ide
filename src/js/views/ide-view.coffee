@@ -20,13 +20,8 @@ App.IdeView = Em.View.extend
     controller = @get 'controller'
     controller.validateHostAndContainerState()
     @set('timeStarted', Date.now())
-    #Mp.track Mp.EventIDEStarted, container_id: @get 'controller.id'
-    #Mp.increment Mp.PropertyIDEStartCount
 
   willDestroyElement: ->
     @_super()
-    #Mp.track Mp.EventIDEDeparted, container_id: @get 'controller.id'
-    #if started = @get('timeStarted')
-      #Mp.increment Mp.PropertyIDEUseTime, Date.now() - started
     $('html').removeClass 'ide'
     $(window).unbind 'keydown.ideView'

@@ -29,7 +29,6 @@ App.MenuItem = Em.Object.extend
   chromePcKey: null
   url: null
   target: null
-  track: null
   submenu: null
   checked: false
   callback: Em.K

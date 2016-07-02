@@ -51,7 +51,6 @@ App.IdeConsoleController = Em.ArrayController.extend App.IdeTabControllerMixin, 
   addTab: (tab, settings = {}) ->
     empty = @get('content.length') == 0
     @_super.apply this, arguments
-    #Mp.track Mp.EventIDEUserOpenedConsole
     if empty
       App.get('container').setMetadata({noConsole: null})
       @set 'minimized', false
