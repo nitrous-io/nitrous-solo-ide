@@ -18,10 +18,6 @@ App.User = klass = Em.Object.extend
     @get('billing_profile.state') == "free"
   ).property 'billing_profile.state'
 
-  usageRemainingHours: (->
-    Math.round(@get('usage_remaining') / (60*60))
-  ).property 'usage_remaining'
-
 klass.reopenClass
   fetch: ->
     new Ember.RSVP.Promise (resolve, reject) =>

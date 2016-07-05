@@ -55,10 +55,6 @@ window.NitrousIO = Em.Application.extend Em.Evented,
       window.localStorage.removeItem('token')
   ).observes 'token'
 
-  dashboardURL: ( ->
-    "/app/#/containers/#{App.get 'container.slug'}"
-  ).property 'App.container.slug'
-
   reloadContainer: ->
     @loadContainer(@get 'slug').then (container) ->
       container.loadCollaborators()

@@ -8,8 +8,6 @@ activeDocumentSet = (attr, val) ->
 App.IdeMainMenuController = Em.Controller.extend
   needs: ['ide', 'ideEditor', 'ideConsole', 'ideFindInProject', 'ideFileFinder', 'ideSidebar']
   initialize: ->
-    this._reloadUserUsage()
-
   reset: ->
 
   toggleBetaMode: ->
@@ -235,12 +233,3 @@ App.IdeMainMenuController = Em.Controller.extend
   _toggleEditorProperty: (property) ->
     if editorController = @get 'controllers.ideEditor'
       editorController.toggleProperty(property)
-
-  _reloadUserUsage: ->
-    Ember.run.later(this, (=>
-      App.User.fetch().then (user) ->
-        App.user.set 'usage_remaining', user.usage_remaining
-        App.user.set 'usage_quota', user.usage_quota
-
-      this._reloadUserUsage()
-    ), 60*1000)
