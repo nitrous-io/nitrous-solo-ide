@@ -165,15 +165,6 @@ App.IdeMainMenuView = Em.View.extend
           disabledBinding: Em.Binding.oneWay('App.router.ideEditorController.hasNoTab')
           callback: (controller) ->
             controller.editGoToLine()
-        menuItem 'Go to Definition',
-          macKey: 'shift+ctrl+.', pcKey: 'ctrl+alt+.'
-          chromeMacKey: ['shift+command+.', 'shift+ctrl+.'],     chromePcKey: ['shift+ctrl+.', 'ctrl+alt+.']
-          disabled: (->
-            return false if App.get('router.ideEditorController.supportsGoToDefinition')
-            true
-          ).property 'App.router.ideEditorController.supportsGoToDefinition'
-          callback: (controller) ->
-            controller.findGoToDefinition()
         separator
         menuItem 'Fold',
           chromeMacKey: 'option+command+[', chromePcKey: 'shift+ctrl+['

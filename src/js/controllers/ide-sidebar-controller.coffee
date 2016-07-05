@@ -146,9 +146,6 @@ App.IdeSidebarController = Em.ArrayController.extend
       if doc = editorController.findProperty 'path', path
         unless settings.active == false
           editorController.makeTabActive doc
-
-        if (selections = settings.selections) && (selOne = selections[0])
-          doc.set 'goToLine', {line: selOne.anchor.line, cursor: selOne.anchor.ch}
         if settings.done
           settings.done(doc)
       else

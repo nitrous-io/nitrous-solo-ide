@@ -25,7 +25,6 @@ App.IdeController = Em.ObjectController.extend
 
   repository: null
   errorDialog: null
-  showBetaDialog: null
   resumeSessionDialog: null
   startProjectDialog: null
 
@@ -62,11 +61,6 @@ App.IdeController = Em.ObjectController.extend
       router.get('ideSidebarController').initialize()
       router.get('ideEditorController').initialize()
       router.get('ideConsoleController').initialize()
-
-      PubSub.subscribe 'error.message', (msg, data) =>
-        @set('errorDialog', data)
-
-      App.CodePluginsManager.setAvailableOption 'container', container
 
       @set 'opsSocket', opsSocket = App.OpsSocket.create(container: container)
       opsSocket.connect()
@@ -258,12 +252,6 @@ App.IdeController = Em.ObjectController.extend
       fileMon = App.ActiveFilesMonitor.create(collabSocket: @get('collabSocket'), username: App.get('user.username'))
       @set 'activeFilesMonitor', fileMon
   ).observes 'collabSocket.startedFirstTime'
-
-  opsSocketDidStartForTheFirstTime: (->
-    if @get 'opsSocket.startedFirstTime'
-      socket = @get 'opsSocket'
-      App.CodePluginsManager.setAvailableOption 'opsSocket', socket
-  ).observes 'opsSocket.startedFirstTime'
 
   warnWhenOffline: (->
     if App.get 'offline'

@@ -54,12 +54,6 @@ App.OpsSocket = klass = App.EventedSocket.extend
   run: (cmd, cwd, env, callback) ->
     @send 'cmd', 'run', cmd, cwd, env, callback
 
-  loginrun: (cmd, cwd, env, callback) ->
-    @send 'cmd', 'loginrun', cmd, cwd, env, callback
-
-  minirun: (cmd, cwd, env, callback) ->
-    @send 'cmd', 'minirun', cmd, cwd, env, callback
-
   search: (id, term, location, ignoreCase, useRegexp, filePattern, callback) ->
     request =
       id: id

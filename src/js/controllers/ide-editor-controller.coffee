@@ -22,8 +22,6 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
 
   pingerSocketBinding: Em.Binding.oneWay 'App.pingerSocket'
 
-  supportsGoToDefinitionBinding: Em.Binding.oneWay 'activeTab.supportsGoToDefinition'
-
   activeFilesMonitorBinding: Em.Binding.oneWay 'App.router.ideController.activeFilesMonitor'
 
   softTabs: true
@@ -39,9 +37,6 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
   removeTrailingWhitespaceOnSave: true
   keybindings: 'default'
   fontSize: null
-  autocomplete: false
-
-  beta: false
 
   trackActivityQueued: false
 
@@ -76,8 +71,6 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
     userSettings = App.get('userSettings') || {}
     _.each App.Editor.SETTINGS, (k) =>
       setting = userSettings[k.underscore()]
-      if k == 'autocomplete' # Ignore autocomplete for now.
-        return
       if setting?
         @set(k, setting)
       @addObserver(k, this, 'updateUserSettings')
@@ -98,8 +91,6 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
         opsSocket.unwatchFile absPath
 
       @_super(tab)
-      if call = tab.didClose
-        call.apply(tab, [])
     else
       @set 'confirmCloseDialog', App.ConfirmCloseDialog.create document: tab
 
@@ -112,11 +103,6 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
     if rootPane = @get 'rootPane'
       @get('activeFilesMonitor').tabsDidChange(rootPane.allTabs())
   ).observes 'rootPane', 'activeFilesMonitor', 'activeTab', 'content.length'
-
-  goToDefinition: (doc) ->
-    opsSocket = @get 'opsSocket'
-    if plugin = doc.get('plugin')
-      plugin.goToDefinition({opsSocket: opsSocket, sidebar: App.get('router.ideSidebarController')})
 
   handleFileChanged: (err, file) ->
     path = App.Path.create(absolutePath: file)
@@ -150,11 +136,7 @@ App.IdeEditorController = Em.ArrayController.extend App.IdeTabControllerMixin,
           App.set 'flashMessage', { type: 'alert-error', text: "Error saving file '#{path.get('absolutePath')}'" }
           return
         doc.set 'documentLastUpdated', Date.now()
-
         doc.set 'clean', true
-
-        if plugin = doc.get('plugin')
-          plugin.afterSave({opsSocket: opsSocket, sidebar: App.get('router.ideSidebarController')})
 
         @trackActivity()
     else

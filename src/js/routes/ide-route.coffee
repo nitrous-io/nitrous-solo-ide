@@ -8,7 +8,6 @@ App.IdeRoute = Em.Route.extend
         App.set 'user', user
       userSettingsFetch = App.UserSettings.fetch().then (settings) ->
         App.set 'userSettings', settings
-        App.CodePluginsManager.setAvailableOption 'userSettings', settings
       , (jqxhr) ->
         if jqxhr.responseJSON?.error == "outstanding_invoices"
           App.snackbar.post "IDE unavailable while you have outstanding invoices. Redirecting.."

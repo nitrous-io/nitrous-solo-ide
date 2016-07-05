@@ -6,8 +6,6 @@ App.IdeEditorFindReplaceView document=view.document
   .ide-toolbar-btns
     button.ui.btn click='didClickLineCol target="view"'
       | Line {{view.document.line}}, Column {{view.document.column}}
-      if view.document.currentOffset
-        |  Offset {{view.document.currentOffset}}
     if view.document.errorCount
       span.errors
         | {{view.document.errorCount}} {{plural view.document.errorCount 'Error' 'Errors'}}

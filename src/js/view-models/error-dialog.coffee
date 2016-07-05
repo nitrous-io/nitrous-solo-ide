@@ -7,5 +7,4 @@ App.ErrorDialog = Em.Object.extend
   errorTitle: 'An error has occured'
   errorMessage: 'An error has occured'
   redirectUrl: "/app"
-  newWindow: false
   okButtonText: 'OK'

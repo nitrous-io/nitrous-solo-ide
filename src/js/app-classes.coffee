@@ -20,8 +20,6 @@ req = require.context('./templates', true, /^(.*\.(emblem$))[^.]*$/igm)
 req(key) for key in req.keys()
 req = require.context('./templates', true, /^(.*\.(hbs$))[^.]*$/igm)
 req(key) for key in req.keys()
-req = require.context('./code-plugins', true, /^(.*\.(coffee$|js$))[^.]*$/igm)
-req(key) for key in req.keys()
 req = require.context('./routes', true, /^(.*\.(coffee$|js$))[^.]*$/igm)
 req(key) for key in req.keys()
 

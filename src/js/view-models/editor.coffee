@@ -20,7 +20,6 @@ App.Editor = klass = Em.Object.extend
   wrapLines: null
   wrapperStyling: null
   fontSize: null
-  autocomplete: false
 
   foldGutterClass: 'CodeMirror-foldgutter'
 
@@ -165,22 +164,6 @@ App.Editor = klass = Em.Object.extend
     if cm = @get 'codeMirror'
       cm.execCommand('splitSelectionByLine')
 
-  getOffset: ->
-    if cm = @get 'codeMirror'
-      c = cm.getCursor()
-      lineNo = c.line
-      cursorNo = c.ch
-      l = 0
-      dLength = 0
-      cm.eachLine (line) ->
-        if l == lineNo
-          dLength += cursorNo
-          return true
-        dLength += (line.text.length + 1)
-        l++
-        false
-      dLength
-
   removeTrailingWhitespace: ->
     if cm = @get 'codeMirror'
       cm.operation ->
@@ -298,11 +281,6 @@ App.Editor = klass = Em.Object.extend
       cm.refresh()
   ).observes 'wrapperStyling'
 
-  setCodeMirrorOnPlugin: (->
-    if (cm = @get('codeMirror')) && (plugin = @get('documentPlugin'))
-      plugin.setOption 'codeMirror', cm
-  ).observes 'codeMirror', 'documentPlugin'
-
   _bootstrapCodeMirror: ->
     cm = CodeMirror @get('domTarget'),
       lint              : @get 'lintableMode'
@@ -340,36 +318,6 @@ App.Editor = klass = Em.Object.extend
     cm.on 'change', (cm, data) =>
       if @get('text') != (content = cm.getValue())
         @set 'text', content
-
-    cm.on 'changes', (cm, changes) =>
-      if (plugin = @get('documentPlugin'))
-        plugin.afterChanges(changes)
-
-    cm.on 'keydown', (cm, e)=>
-      # unless explicitly disabled
-      return if @get('autocomplete') == false
-
-      if e.keyCode == 224 || (e.keyCode >= 91 && e.keyCode <= 93)
-        @osKeyActive = true
-
-    cm.on 'keyup', (cm, e)=>
-      # unless explicitly disabled
-      return if @get('autocomplete') == false
-
-      if @osKeyActive
-        @osKeyActive = false
-        return
-
-      # disable autocomplete on Windows Ctrl+Z, Ctrl+X, Ctrl+C, Ctrl+S
-      if e.ctrlKey && (e.keyCode == 90 || e.keyCode == 88 || e.keyCode == 67 || e.keyCode == 83)
-        return
-
-      if e.keyCode == 8 || (e.keyCode >= 48 && e.keyCode <= 90) || (e.keyCode >= 186 && e.keyCode <= 222)
-        if (plugin = @get('documentPlugin')) && (pluginCmd = plugin.autocomplete)
-          command = (cm, callback, options)->
-            pluginCmd.apply plugin, [cm, callback, options]
-          command.async = true
-          cm.showHint hint: command
 
     cm.on 'gutterClick', (cm, line, gutter, e) ->
       return if gutter != 'CodeMirror-linenumbers'
@@ -429,6 +377,4 @@ klass.reopenClass
     'keybindings'
     'removeTrailingWhitespaceOnSave'
     'fontSize'
-    'autocomplete'
-    'beta'
   ]

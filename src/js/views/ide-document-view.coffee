@@ -10,7 +10,7 @@ App.IdeDocumentView = Em.View.extend
   document: null
   editor: null
 
-  modeBinding: 'document.editorMode'
+  mode: 'text/plain'
   autoCloseBracketsBinding: 'controller.autoCloseBrackets'
   highlightLineBinding: 'controller.highlightLine'
   keybindingsBinding: 'controller.keybindings'
@@ -23,7 +23,6 @@ App.IdeDocumentView = Em.View.extend
   themeBinding: 'controller.theme'
   wrapLinesBinding: 'controller.wrapLines'
   fontSizeBinding: 'controller.fontSize'
-  autocompleteBinding: 'controller.autocomplete'
 
   foldGutterClass: 'CodeMirror-foldgutter'
 
@@ -46,13 +45,11 @@ App.IdeDocumentView = Em.View.extend
     $(window).on "unload.#{@get('elementId')}", =>
       @leaveCollab()
       return # need to return void
-    @watchOffset()
 
   willDestroyElement: ->
     @_super()
     @destroyEditor()
     @leaveCollab()
-    @stopWatchOffset()
     $(window).off "unload.#{@get('elementId')}"
 
   collabNamespace: (->
@@ -127,11 +124,6 @@ App.IdeDocumentView = Em.View.extend
     if @get 'document.path.deleted'
       this.remove()
   ).observes 'document.path.deleted'
-
-  setPlugin: (->
-    if editor = @get('editor')
-      editor.set 'documentPlugin', @get('document.plugin')
-  ).observes 'document.plugin'
 
   jumpToLine: (->
     if line = @get 'document.goToLine'
@@ -349,10 +341,6 @@ App.IdeDocumentView = Em.View.extend
     @updateEditor('keybindings')
   ).observes 'keybindings'
 
-  autocompleteDidChange: (->
-    @updateEditor('autocomplete')
-  ).observes 'autocomplete'
-
   contentDidChange: (->
     if editor = @get 'editor'
       editor.set 'text', @get 'document.content'
@@ -511,17 +499,6 @@ App.IdeDocumentView = Em.View.extend
     @set 'document.path.collabPath', fileName
     @_joinCollab()
   ).observes 'document.path.absolutePath'
-
-  watchOffset: ->
-    @watchOffsetTimer = window.setInterval(=>
-      return unless @get('document.active')
-      if editor = @get('editor')
-        @set 'document.currentOffset', editor.getOffset()
-    , 100)
-
-  stopWatchOffset: ->
-    if @watchOffsetTimer
-      window.clearInterval(@watchOffsetTimer)
 
   actions:
     didClickLineCol: ->

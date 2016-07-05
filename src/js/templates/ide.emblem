@@ -9,7 +9,6 @@
 
     App.IdeConsoleView controller=App.router.ideConsoleController
 
-App.IdeBetaDialogView
 App.IdeErrorDialogView
 App.IdeResumeSessionDialogView
 App.IdeStartProjectDialogView

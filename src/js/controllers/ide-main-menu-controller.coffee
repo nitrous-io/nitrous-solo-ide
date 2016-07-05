@@ -10,14 +10,6 @@ App.IdeMainMenuController = Em.Controller.extend
   initialize: ->
   reset: ->
 
-  toggleBetaMode: ->
-    if editorController = @get 'controllers.ideEditor'
-      if editorController.get('beta')
-        editorController.set 'autoCompleteBeta', false
-        editorController.set 'beta', false
-      else
-        @get('controllers.ide').set('showBetaDialog', true)
-
   fileNew: ->
     if App.get('consoleFocused') && consoleController = @get 'controllers.ideConsole'
       consoleController.createTab()
@@ -62,10 +54,6 @@ App.IdeMainMenuController = Em.Controller.extend
   findReplace: ->
     activeDocumentSet 'replaceTrigger', true
 
-  findGoToDefinition: ->
-    if editorController = @get 'controllers.ideEditor'
-      editorController.goToDefinition editorController.get('activeTab')
-
   revealInSidebar: ->
     if editorController = @get 'controllers.ideEditor'
       path = editorController.get('activeTab.path')
@@ -99,9 +87,6 @@ App.IdeMainMenuController = Em.Controller.extend
 
   editSplitSelectionIntoLines: (type) ->
     activeDocumentSet 'splitSelectionIntoLinesTrigger', true
-
-  editToggleAutocomplete: ->
-    @_toggleEditorProperty 'autocomplete'
 
   windowFocusConsole: ->
     if doc = @get 'controllers.ideEditor.activeTab'
@@ -202,9 +187,6 @@ App.IdeMainMenuController = Em.Controller.extend
   viewResetFontSize: ->
     if editorController = @get 'controllers.ideEditor'
       editorController.resetFontSize()
-
-  betaToggleAutoCompleteBeta: ->
-    @_toggleEditorProperty 'autoCompleteBeta'
 
   showConfirmStopHostDialog: ->
     ui.showModal '#confirm-stop-host-dialog'
