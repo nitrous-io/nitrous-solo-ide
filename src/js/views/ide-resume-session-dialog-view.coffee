@@ -1,5 +1,5 @@
 App.IdeResumeSessionDialogView = App.IdeModalDialogView.extend
-  templateName: 'ide/resume-session-dialog'
+  templateName: 'resume-session-dialog'
   elementId: 'ide-resume-session-dialog-view'
   contentBinding: 'controller.resumeSessionDialog'
 

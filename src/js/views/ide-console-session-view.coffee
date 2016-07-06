@@ -3,7 +3,7 @@ require '../mixins/inject-terminal-iframe-mixin'
 consoleSessionViewNextId = 0
 
 App.IdeConsoleSessionView = Em.View.extend App.InjectTerminalIframeMixin,
-  templateName: 'ide/console-session'
+  templateName: 'console-session'
   consoleSessionViewId: null
   consoleSession: null
   classNames: ['ide-console-session-view']

@@ -1,5 +1,5 @@
 App.IdeEditorFindReplaceView = Em.View.extend
-  templateName: 'ide/editor-find-replace'
+  templateName: 'editor-find-replace'
   classNames: ['ide-editor-find-replace-view']
   classNameBindings: ['hidden']
 

@@ -1,3 +1,3 @@
 App.BlankView = Em.View.extend
-  templateName: 'templates/blank'
+  templateName: 'blank'
   elementId: 'blank_view'

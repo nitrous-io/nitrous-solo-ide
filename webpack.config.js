@@ -19,7 +19,7 @@ var jsConfig = {
   module: {
     loaders: [
       { test: /\.coffee$/, loader: 'coffee' },
-      { test: /\.emblem$/, loader: 'ember-emblem-loader' }
+      { test: /\.emblem$/, loader: 'ember-emblem-loader', query: { appPath: 'src/js' }}
     ]
   },
   resolve: {

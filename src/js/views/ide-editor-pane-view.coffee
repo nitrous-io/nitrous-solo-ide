@@ -1,5 +1,5 @@
 App.IdeEditorPaneView = Em.View.extend App.IdeTabViewMixin,
-  templateName: 'ide/editor-pane'
+  templateName: 'editor-pane'
   classNames: ['ide-editor-pane-view']
   classNameBindings: ['editorPane.active']
 

@@ -1,5 +1,5 @@
 App.IdeSidebarView = Em.View.extend
-  templateName: 'ide/sidebar'
+  templateName: 'sidebar'
   elementId: 'ide-sidebar-view'
   classNameBindings: ['App.fileTreeHidden:hidden']
 

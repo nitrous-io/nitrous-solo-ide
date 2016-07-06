@@ -1,5 +1,5 @@
 App.IdePathNameView = Em.View.extend
-  templateName: 'ide/path-name'
+  templateName: 'path-name'
   tagName: 'a'
   attributeBindings: ['href']
   classNameBindings: ['path.loading:loading', 'path.beingDeleted:deleted']

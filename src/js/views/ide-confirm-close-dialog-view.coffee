@@ -1,5 +1,5 @@
 App.IdeConfirmCloseDialogView = App.IdeModalDialogView.extend
-  templateName: 'ide/confirm-close-dialog'
+  templateName: 'confirm-close-dialog'
   elementId: 'ide-confirm-close-dialog-view'
   contentBinding: 'controller.confirmCloseDialog' # ideEditorController
 

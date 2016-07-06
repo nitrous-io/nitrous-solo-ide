@@ -1,4 +1,0 @@
-if indeterminate
-  .bar.indeterminate
-else
-  .bar style={cssWidth}

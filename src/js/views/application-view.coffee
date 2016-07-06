@@ -1,3 +1,3 @@
 App.ApplicationView = Ember.View.extend
-  templateName: 'ide/application'
+  templateName: 'application'
   elementId: 'application-view'

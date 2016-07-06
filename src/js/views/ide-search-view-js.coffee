@@ -1,5 +1,5 @@
 App.IdeSearchView = Em.View.extend
-  templateName: 'ide/search'
+  templateName: 'search'
   classNames: ['ide-search-view']
   classNameBindings: ['document.active']
 

@@ -3,7 +3,7 @@
 TAB_SIZES = [2, 3, 4, 8]
 
 App.IdeDocumentView = Em.View.extend
-  templateName: 'ide/document'
+  templateName: 'document'
   classNames: ['ide-document-view']
   classNameBindings: ['document.active']
 

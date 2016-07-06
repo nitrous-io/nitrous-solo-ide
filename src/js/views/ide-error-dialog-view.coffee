@@ -1,5 +1,5 @@
 App.IdeErrorDialogView = App.IdeModalDialogView.extend
-  templateName: 'ide/error-dialog'
+  templateName: 'error-dialog'
   elementId: 'ide-error-dialog-view'
   contentBinding: 'controller.errorDialog'
 

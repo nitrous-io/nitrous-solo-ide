@@ -1,5 +1,5 @@
 App.IdeImageView = Em.View.extend
-  templateName: 'ide/image'
+  templateName: 'image'
   classNames: ['ide-image-view']
   classNameBindings: ['document.active', 'zoomed']
 

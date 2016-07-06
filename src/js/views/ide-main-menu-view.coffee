@@ -55,7 +55,7 @@ themesMenu = menu 'Themes', _.map [
       ).property 'App.router.ideEditorController.theme'
 
 App.IdeMainMenuView = Em.View.extend
-  templateName: 'ide/main-menu'
+  templateName: 'main-menu'
   elementId: 'ide-main-menu-view'
 
   previewPortBinding: Em.Binding.oneWay 'App.container.previewPort'

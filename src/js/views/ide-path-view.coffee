@@ -1,5 +1,5 @@
 App.IdePathView = Em.View.extend App.IdeDragDropViewMixin,
-  templateName: 'ide/path'
+  templateName: 'path'
   tagName: 'li'
   path: null
   droppable: false

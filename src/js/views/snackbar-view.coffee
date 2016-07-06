@@ -3,7 +3,7 @@ snackbarMarginTop = 16
 
 App.SnackbarView = Em.View.extend
   tagName: 'ul'
-  templateName: 'ide/snackbar'
+  templateName: 'snackbar'
   classNames: ['snackbar-view', 'ui', 'snackbar']
 
   items: null

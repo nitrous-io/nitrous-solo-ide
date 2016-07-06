@@ -1,5 +1,5 @@
 App.IdeGoToLineDialogView = App.IdeModalDialogView.extend
-  templateName: 'ide/go-to-line-dialog'
+  templateName: 'go-to-line-dialog'
   elementId: 'ide-go-to-line-dialog-view'
   contentBinding: 'controller.goToLineDialog'
 

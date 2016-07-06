@@ -1,5 +1,5 @@
 App.IdeStartProjectDialogView = App.IdeModalDialogView.extend
-  templateName: 'ide/start-project-dialog'
+  templateName: 'start-project-dialog'
   elementId: 'ide-start-project-dialog-view'
   contentBinding: 'controller.startProjectDialog'
 

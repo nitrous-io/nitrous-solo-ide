@@ -1,5 +1,5 @@
 App.IdeSidebarActiveFilesView = Em.View.extend
-  templateName: 'ide/sidebar-active-files'
+  templateName: 'sidebar-active-files'
   elementId: 'ide-sidebar-active-files-view'
 
   activeFilesMonitorBinding: Em.Binding.oneWay 'controller.activeFilesMonitor'

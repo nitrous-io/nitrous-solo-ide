@@ -1,5 +1,5 @@
 App.IdeEditorView = Em.View.extend
-  templateName: 'ide/editor'
+  templateName: 'editor'
   elementId: 'ide-editor-view'
   classNameBindings: ['controller.fullscreen:fullscreen', 'App.consoleFullscreen:hide']
 

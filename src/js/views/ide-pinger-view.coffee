@@ -1,5 +1,5 @@
 App.IdePingerView = Em.View.extend
-  templateName: 'ide/pinger'
+  templateName: 'pinger'
   elementId: 'ide-pinger-view'
   attributeBindings: ['title']
   classNameBindings: ['latencyClass']

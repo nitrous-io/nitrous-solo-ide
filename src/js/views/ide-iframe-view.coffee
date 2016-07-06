@@ -1,5 +1,5 @@
 App.IdeIframeView = Em.View.extend
-  templateName: 'ide/iframe'
+  templateName: 'iframe'
   classNames: ['ide-iframe-view']
   classNameBindings: ['document.active']
 

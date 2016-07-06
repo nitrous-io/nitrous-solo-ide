@@ -1,5 +1,5 @@
 App.IdeView = Em.View.extend
-  templateName: 'ide/ide'
+  templateName: 'ide'
   elementId: 'ide-view'
 
   timeStarted: null

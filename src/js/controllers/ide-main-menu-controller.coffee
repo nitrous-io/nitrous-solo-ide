@@ -1,6 +1,3 @@
-#require '../components/ui-progress-component'
-#require '../templates/ui-progress'
-
 activeDocumentSet = (attr, val) ->
   if tab = App.get 'router.ideEditorController.activeTab'
     tab.set attr, val

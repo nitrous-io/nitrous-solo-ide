@@ -1,5 +1,5 @@
 App.IdeMenuView = Em.View.extend
-  templateName: 'ide/menu'
+  templateName: 'menu'
   tagName: 'ul'
   classNames: ['dropdown-menu']
   content: null

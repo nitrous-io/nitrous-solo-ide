@@ -1,5 +1,5 @@
 App.IdePathContextMenuView = Em.View.extend
-  templateName: 'ide/path-context-menu'
+  templateName: 'path-context-menu'
   elementId: 'ide-path-context-menu-view'
   classNames: ['ui', 'dropdown']
 

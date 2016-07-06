@@ -1,7 +1,7 @@
 LINE_NO_REGEX = /\s*:(\d+)\s*$/
 
 App.IdeFileFinderDialogView = App.IdeModalDialogView.extend
-  templateName: 'ide/file-finder-dialog'
+  templateName: 'file-finder-dialog'
   elementId: 'ide-file-finder-dialog-view'
   contentBinding: 'controller.fileFinderDialog'
 

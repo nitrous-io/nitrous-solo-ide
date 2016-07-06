@@ -1,5 +1,5 @@
 App.IdeEditorTabView = klass = Em.View.extend App.IdeTabViewMixin, App.IdeDragDropViewMixin,
-  templateName: 'ide/editor-tab'
+  templateName: 'editor-tab'
   classNames: ['ide-editor-tab-view']
   classNameBindings: ['content.active:selected', 'dropLeft:drop-left', 'dropRight:drop-right']
   attributeBindings: 'draggable'
