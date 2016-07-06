@@ -1,7 +1,7 @@
-require 'script!./vendor/jquery.js'
-require 'script!./vendor/handlebars.js'
-require 'script!./vendor/ember.js'
-require 'script!./vendor/ember-model.js'
+require 'script!uglify!./vendor/jquery.js'
+require 'script!uglify!./vendor/handlebars.js'
+require 'script!uglify!./vendor/ember.js'
+require 'script!uglify!./vendor/ember-model.js'
 
 window._ = require './vendor/underscore'
 require './vendor/md5'

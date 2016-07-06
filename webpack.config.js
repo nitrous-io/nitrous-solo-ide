@@ -1,9 +1,11 @@
+const APP_ENV = process.env.APP_ENV || 'development';
 const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-module.exports = [{
+var jsConfig = {
   name: 'js',
   entry: {
     bundle: path.resolve(__dirname, 'src', 'js', 'main.coffee'),
@@ -29,13 +31,6 @@ module.exports = [{
       to: path.resolve(__dirname, 'dist', 'index.html')
     }])
   ],
-  //plugins: [
-    //new webpack.optimize.UglifyJsPlugin({
-      //compress: {
-        //warnings: false
-      //}
-    //})
-  //],
   node: {
     fs: "empty"
   },
@@ -46,7 +41,13 @@ module.exports = [{
     port: 3838,
     contentBase: './dist'
   }
-}, {
+};
+
+if (APP_ENV !== 'development') {
+  jsConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({compress:{warnings: false}}));
+}
+
+var cssConfig = {
   name: 'css',
   entry: {
     app: path.resolve(__dirname, 'src', 'css', 'application.sass'),
@@ -60,7 +61,7 @@ module.exports = [{
   module: {
     loaders: [
       { test: /\.s(a|c)ss$/, loader: ExtractTextPlugin.extract('style', 'css!sass') },
-      { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url' }
+      { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'file' }
     ]
   },
   resolve: {
@@ -69,11 +70,14 @@ module.exports = [{
   plugins: [
     new ExtractTextPlugin('[name].css', {
       allChunks: true
-    })
+    }),
+    new OptimizeCssAssetsPlugin()
   ],
   node: {
     fs: 'empty'
   },
   debug: true,
   devtool: 'source-map'
-}]
+};
+
+module.exports = [jsConfig, cssConfig]
