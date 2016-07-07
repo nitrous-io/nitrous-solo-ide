@@ -69,12 +69,6 @@ window.NitrousIO = Em.Application.extend Em.Evented,
       App.set 'container', container
       container
 
-  loadSettings: ->
-    promise = Em.RSVP.Promise.cast(Em.$.ajax("/api/v0/app_settings"))
-    promise.then (settings) ->
-      App.set 'settings', settings
-    promise
-
   didChangeTitle: (->
     title = @get 'title'
     document.title = if title
