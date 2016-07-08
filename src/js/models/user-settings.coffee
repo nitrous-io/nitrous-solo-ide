@@ -43,13 +43,7 @@ App.UserSettings = klass = Em.Object.extend
 
 klass.reopenClass
   fetch: ->
-    promise = new Ember.RSVP.Promise (resolve, reject) =>
-      Em.$.ajax(
-        type: 'GET',
-        url: '/api/v0/user/settings',
-        headers: { Authorization: "Bearer #{App.get 'token'}" }
-      ).done((data, status, jqxhr) ->
-        resolve(klass.create(data.user_settings))
-      ).fail (jqxhr) ->
-        reject(jqxhr)
-    promise
+    new Ember.RSVP.Promise (resolve, reject) =>
+      resolve(App.UserSettings.create(
+        FakeJSON.user_settings
+      ))
