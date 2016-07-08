@@ -2,19 +2,11 @@ message = 'You will lose unsaved work if you close the IDE.'
 
 App.IdeRoute = Em.Route.extend
   beforeModel: ->
-    if App.get 'token'
-      userFetch = App.User.fetch().then (user) ->
-        App.set 'user', user
-      userSettingsFetch = App.UserSettings.fetch().then (settings) ->
-        App.set 'userSettings', settings
-      , (jqxhr) ->
-        if jqxhr.responseJSON?.error == "outstanding_invoices"
-          App.snackbar.post "IDE unavailable while you have outstanding invoices. Redirecting.."
-        window.location.href = '/app'
-      Em.RSVP.allSettled([userFetch, userSettingsFetch])
-    else
-      # redirect to login screen if user hasn't logged in
-      window.location.href = '/app/#/login'
+    userFetch = App.User.fetch().then (user) ->
+      App.set 'user', user
+    userSettingsFetch = App.UserSettings.fetch().then (settings) ->
+      App.set 'userSettings', settings
+    Em.RSVP.allSettled([userFetch, userSettingsFetch])
 
   model: (params) ->
     @_super.apply this, arguments

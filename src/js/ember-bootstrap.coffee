@@ -2,6 +2,8 @@ window.EmberENV =
   FEATURES:
     'query-params-new': true
 
+require './fake_json/config'
+
 Em = Ember
 window.NitrousIO = Em.Application.extend Em.Evented,
   rootElement: '#app'
@@ -25,7 +27,6 @@ window.NitrousIO = Em.Application.extend Em.Evented,
   flashMessage: null
 
   slug: null
-  token: null
 
   user: null
   userSettings: null
@@ -47,13 +48,6 @@ window.NitrousIO = Em.Application.extend Em.Evented,
   redirecting: false
 
   freighterdFeatures: null
-
-  didChangeToken: (->
-    if token = @get('token')
-      window.localStorage.setItem('token', token)
-    else
-      window.localStorage.removeItem('token')
-  ).observes 'token'
 
   reloadContainer: ->
     @loadContainer(@get 'slug').then (container) ->

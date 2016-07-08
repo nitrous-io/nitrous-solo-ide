@@ -3,7 +3,6 @@ App.User = klass = Em.Object.extend
   username: null
   name: null
   email: null
-  admin: null
   created_at: null
   updated_at: null
 
@@ -21,11 +20,6 @@ App.User = klass = Em.Object.extend
 klass.reopenClass
   fetch: ->
     new Ember.RSVP.Promise (resolve, reject) =>
-      Em.$.ajax(
-        type: 'GET',
-        url: '/api/v0/user',
-        headers: { Authorization: "Bearer #{App.get 'token'}" }
-      ).done((data, status, jqxhr) ->
-        resolve(App.User.create(data.user))
-      ).fail (jqxhr) ->
-        reject(jqxhr)
+      resolve(App.User.create(
+        FakeJSON.user
+      ))

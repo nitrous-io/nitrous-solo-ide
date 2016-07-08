@@ -3,6 +3,8 @@ require 'script!uglify!./vendor/handlebars.js'
 require 'script!uglify!./vendor/ember.js'
 require 'script!uglify!./vendor/ember-model.js'
 
+window.FakeJSON = require 'script!uglify!./fake_json/config'
+
 window._ = require './vendor/underscore'
 require './vendor/md5'
 require './vendor/mousetrap'
